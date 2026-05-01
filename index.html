@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aggie's Day</title>
+<script>
+// Generate icon as canvas and set as apple-touch-icon
+window.addEventListener('DOMContentLoaded', () => {
+  const canvas = document.createElement('canvas');
+  canvas.width = 512; canvas.height = 512;
+  const ctx = canvas.getContext('2d');
+
+  // Background — soft dusty rose gradient
+  const bg = ctx.createLinearGradient(0, 0, 512, 512);
+  bg.addColorStop(0, '#E8D5D0');
+  bg.addColorStop(1, '#C9B8C4');
+  ctx.fillStyle = bg;
+  roundRect(ctx, 0, 0, 512, 512, 100);
+  ctx.fill();
+
+  // Subtle inner glow
+  const glow = ctx.createRadialGradient(256, 180, 0, 256, 256, 320);
+  glow.addColorStop(0, 'rgba(255,245,242,0.45)');
+  glow.addColorStop(1, 'rgba(255,245,242,0)');
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, 512, 512);
+
+  // Letter A — serif elegant
+  ctx.fillStyle = '#5C3D4A';
+  ctx.font = 'bold 260px Georgia, serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('A', 258, 248);
+
+  // Small dot decoration
+  ctx.fillStyle = 'rgba(92,61,74,0.35)';
+  ctx.beginPath();
+  ctx.arc(256, 390, 18, 0, Math.PI * 2);
+  ctx.fill();
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+    ctx.closePath();
+  }
+
+  const dataURL = canvas.toDataURL('image/png');
+  const link = document.createElement('link');
+  link.rel = 'apple-touch-icon';
+  link.href = dataURL;
+  document.head.appendChild(link);
+
+  // Also set favicon
+  const favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.href = dataURL;
+  document.head.appendChild(favicon);
+});
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+</script>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Aggie's Day">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F9F5EE;
+    --warm: #EDE8DE;
+    --ink: #1C1A17;
+    --muted: #8A8478;
+    --accent: #C4622D;
+    --accent-light: #F0DDD3;
+    --green: #4A7C59;
+    --green-light: #D6E9DC;
+    --blue: #3B5F8A;
+    --blue-light: #D4E0EF;
+    --gold: #B8922A;
+    --gold-light: #F2E8CF;
+    --lilac: #7B6FA0;
+    --lilac-light: #E4E0F0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    padding: 0 0 60px 0;
+  }
+
+  header {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 28px 24px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(196,98,45,0.18);
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+
+  .header-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+  }
+
+  .header-title em {
+    font-style: italic;
+    color: #D4825A;
+  }
+
+  .header-date {
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(249,245,238,0.55);
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .quick-links {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .quick-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 13px;
+    border-radius: 20px;
+    border: 1px solid rgba(249,245,238,0.2);
+    background: rgba(249,245,238,0.08);
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .quick-btn:hover {
+    background: rgba(249,245,238,0.16);
+    border-color: rgba(249,245,238,0.4);
+  }
+
+  .quick-btn .icon { font-size: 14px; }
+
+  /* Day strip */
+  .day-strip {
+    display: flex;
+    gap: 8px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    background: var(--warm);
+    border-bottom: 1px solid rgba(28,26,23,0.08);
+  }
+
+  .day-strip::-webkit-scrollbar { display: none; }
+
+  .day-pill {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 12px;
+    cursor: pointer;
+    background: transparent;
+    border: 1.5px solid transparent;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .day-pill.active {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .day-pill:not(.active):hover {
+    border-color: rgba(28,26,23,0.15);
+    background: rgba(28,26,23,0.04);
+  }
+
+  .day-pill .day-name {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+  }
+
+  .day-pill.active .day-name { color: rgba(249,245,238,0.6); }
+
+  .day-pill .day-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    line-height: 1.2;
+    margin-top: 1px;
+  }
+
+  .day-pill .dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .day-pill.has-done .dot { opacity: 1; }
+
+  /* Progress bar */
+  .progress-bar-wrap {
+    padding: 14px 20px 10px;
+    background: var(--warm);
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 7px;
+  }
+
+  .progress-track {
+    background: rgba(28,26,23,0.1);
+    border-radius: 4px;
+    height: 5px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+
+  /* Schedule */
+  .schedule {
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .block {
+    border-radius: 14px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .block:active { transform: scale(0.98); }
+
+  .block::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0);
+    transition: background 0.2s;
+  }
+
+  .block:hover::after { background: rgba(255,255,255,0.08); }
+
+  .block.done { opacity: 0.55; }
+
+  .block.done .block-title { text-decoration: line-through; }
+
+  .block-check {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 2px solid currentColor;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    transition: background 0.2s;
+    position: relative;
+    z-index: 1;
+  }
+
+  .block.done .block-check {
+    background: currentColor;
+    color: white;
+  }
+
+  .block-check span { display: none; }
+  .block.done .block-check span { display: block; filter: invert(1); }
+
+  .block-info { flex: 1; position: relative; z-index: 1; }
+
+  .block-time {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    opacity: 0.65;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+  }
+
+  .block-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .block-sub {
+    font-size: 12px;
+    opacity: 0.6;
+    margin-top: 2px;
+  }
+
+  .block-emoji { font-size: 22px; position: relative; z-index: 1; }
+
+  /* Block colors */
+  .b-walk    { background: var(--green-light); color: var(--green); }
+  .b-deep    { background: var(--blue-light);  color: var(--blue); }
+  .b-lunch   { background: var(--gold-light);  color: var(--gold); }
+  .b-workout { background: var(--accent-light);color: var(--accent); }
+  .b-light   { background: var(--lilac-light); color: var(--lilac); }
+  .b-family  { background: #E8F0E4; color: #3D6B35; }
+  .b-other   { background: var(--warm); color: var(--muted); border: 1.5px dashed rgba(28,26,23,0.15); }
+
+  /* Section label */
+  .section-label {
+    padding: 4px 20px 0;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* Note area */
+  .note-area {
+    margin: 8px 20px 0;
+    background: white;
+    border-radius: 14px;
+    padding: 14px 16px;
+    border: 1.5px solid rgba(28,26,23,0.08);
+  }
+
+  .note-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .note-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    resize: none;
+    min-height: 60px;
+    line-height: 1.6;
+  }
+
+  .note-input::placeholder { color: var(--muted); }
+
+  /* Floating reminder to open calendar */
+  .calendar-hint {
+    margin: 12px 20px 0;
+    background: var(--blue-light);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .calendar-hint p {
+    font-size: 12.5px;
+    color: var(--blue);
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .calendar-hint a {
+    flex-shrink: 0;
+    padding: 6px 14px;
+    background: var(--blue);
+    color: white;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* Bottom actions */
+  .bottom-actions {
+    display: flex;
+    gap: 10px;
+    padding: 16px 20px 0;
+  }
+
+  .action-btn {
+    flex: 1;
+    padding: 13px;
+    border-radius: 14px;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .action-btn:hover { opacity: 0.85; }
+
+  .btn-calendar {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .btn-reminders {
+    background: var(--accent);
+    color: white;
+  }
+
+  /* Weekend message */
+  .weekend-msg {
+    margin: 20px;
+    padding: 24px;
+    background: var(--green-light);
+    border-radius: 16px;
+    text-align: center;
+    color: var(--green);
+  }
+
+  .weekend-msg .icon { font-size: 36px; margin-bottom: 10px; }
+  .weekend-msg h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .weekend-msg p { font-size: 14px; opacity: 0.75; }
+
+  /* Motivational banner */
+  .motiv-banner {
+    margin: 14px 20px 0;
+    background: linear-gradient(135deg, #1C1A17 0%, #3B3528 100%);
+    border-radius: 16px;
+    padding: 18px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .motiv-banner::before {
+    content: '✦';
+    position: absolute;
+    right: 18px; top: 12px;
+    font-size: 38px;
+    opacity: 0.07;
+    color: var(--cream);
+  }
+
+  .motiv-quote {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--cream);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .motiv-sub {
+    font-size: 11.5px;
+    color: rgba(249,245,238,0.45);
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+  }
+
+  .motiv-tag {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 4px 10px;
+    background: rgba(196,98,45,0.25);
+    color: #D4825A;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    /* keep light for now — intentional choice */
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div>
+      <div class="header-title">Aggie's <em>Day</em></div>
+      <div class="header-date" id="headerDate"></div>
+    </div>
+  </div>
+  <div class="quick-links">
+    <a class="quick-btn" href="webcal://" id="calLink" onclick="openCalendar(event)">
+      <span class="icon">📅</span> Calendar
+    </a>
+    <a class="quick-btn" href="x-apple-reminderkit://" id="remLink" onclick="openReminders(event)">
+      <span class="icon">🔔</span> Reminders
+    </a>
+  </div>
+</header>
+
+<!-- Day selector -->
+<div class="day-strip" id="dayStrip"></div>
+
+<!-- Progress -->
+<div class="progress-bar-wrap">
+  <div class="progress-label">
+    <span>Today's progress</span>
+    <span id="progressText">0 / 0 done</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill" style="width:0%"></div>
+  </div>
+</div>
+
+<!-- Calendar hint -->
+<div class="calendar-hint">
+  <p>Tap <strong>Calendar</strong> above to check your appointments for today.</p>
+  <a href="#" onclick="openCalendar(event)">Open →</a>
+</div>
+
+<!-- Motivational banner -->
+<div class="motiv-banner" id="motivBanner">
+  <div class="motiv-quote" id="motivQuote"></div>
+  <div class="motiv-sub" id="motivSub"></div>
+  <span class="motiv-tag">📖 PhD in progress</span>
+</div>
+
+<!-- Schedule -->
+<div id="scheduleArea"></div>
+
+<!-- Note -->
+<div class="note-area">
+  <div class="note-label">📝 Today's note</div>
+  <textarea class="note-input" id="noteInput" placeholder="What do you want to focus on today? Any thought…" rows="3"></textarea>
+</div>
+
+<!-- Bottom actions -->
+<div class="bottom-actions">
+  <a href="#" class="action-btn btn-calendar" onclick="openCalendar(event)">
+    <span>📅</span> Open Calendar
+  </a>
+  <a href="#" class="action-btn btn-reminders" onclick="openReminders(event)">
+    <span>🔔</span> Open Reminders
+  </a>
+</div>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────────────
+const today = new Date();
+const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+// Storage helpers
+function storageKey(date, suffix) {
+  return `aggie_${date}_${suffix}`;
+}
+
+function loadForDate(date) {
+  const doneRaw = localStorage.getItem(storageKey(date, 'done'));
+  const noteRaw = localStorage.getItem(storageKey(date, 'note'));
+  return {
+    done: doneRaw ? JSON.parse(doneRaw) : {},
+    note: noteRaw || ''
+  };
+}
+
+function saveForDate(date, done, note) {
+  localStorage.setItem(storageKey(date, 'done'), JSON.stringify(done));
+  localStorage.setItem(storageKey(date, 'note'), note);
+}
+
+function dateStr(d) {
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+// ── Schedule definition ────────────────────────────────────────────────────
+// days: 1-5 = weekday, null = any weekday, 'TuTh' = tue/thu workout
+function getSchedule(dayOfWeek) {
+  const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+  if (isWeekend) return null;
+
+  const isWorkoutDay = dayOfWeek === 2 || dayOfWeek === 4; // Tue, Thu
+
+  const blocks = [
+    {
+      id: 'walk',
+      time: '8:30 – 9:00',
+      title: 'Morning Walk',
+      sub: '30 min outside',
+      emoji: '🚶',
+      color: 'b-walk'
+    },
+    {
+      id: 'deep',
+      time: '9:00 – 12:00',
+      title: 'Deep Work',
+      sub: 'PhD — protected focus time',
+      emoji: '🤓',
+      color: 'b-deep'
+    },
+    {
+      id: 'lunch',
+      time: '12:00 – 13:00',
+      title: 'Lunch Break',
+      sub: isWorkoutDay ? 'Includes 30 min workout today 💪' : '🦵 Gentle reminder: maybe a little leg stretch today?',
+      emoji: '🍽️',
+      color: 'b-lunch'
+    },
+  ];
+
+  if (isWorkoutDay) {
+    blocks.push({
+      id: 'workout',
+      time: '12:00 – 12:30',
+      title: 'Workout',
+      sub: 'During lunch — 30 min',
+      emoji: '💪',
+      color: 'b-workout'
+    });
+  }
+
+  blocks.push(
+    {
+      id: 'light',
+      time: '13:30 – 15:00',
+      title: 'Light PhD Work',
+      sub: 'Admin, emails, reading',
+      emoji: '📚',
+      color: 'b-light'
+    },
+    {
+      id: 'family',
+      time: '16:00 – 21:00',
+      title: 'Quiet Time',
+      sub: 'With your daughter 🌿',
+      emoji: '👧',
+      color: 'b-family'
+    }
+  );
+
+  return blocks;
+}
+
+// ── Selected date ──────────────────────────────────────────────────────────
+let selectedDate = today;
+
+// ── Render ─────────────────────────────────────────────────────────────────
+function renderHeader() {
+  const d = selectedDate;
+  document.getElementById('headerDate').textContent =
+    `${DAYS[d.getDay()]}, ${MONTHS[d.getMonth()]} ${d.getDate()}`;
+}
+
+function renderDayStrip() {
+  const strip = document.getElementById('dayStrip');
+  strip.innerHTML = '';
+
+  // show 7 days: 3 before today, today, 3 after
+  for (let i = -3; i <= 3; i++) {
+    const d = new Date(today);
+    d.setDate(today.getDate() + i);
+    const ds = dateStr(d);
+    const { done } = loadForDate(ds);
+    const hasDone = Object.values(done).some(Boolean);
+
+    const pill = document.createElement('div');
+    pill.className = 'day-pill' +
+      (dateStr(d) === dateStr(selectedDate) ? ' active' : '') +
+      (hasDone ? ' has-done' : '');
+
+    pill.innerHTML = `
+      <div class="day-name">${DAYS[d.getDay()]}</div>
+      <div class="day-num">${d.getDate()}</div>
+      <div class="dot"></div>
+    `;
+
+    pill.addEventListener('click', () => {
+      selectedDate = d;
+      renderAll();
+    });
+
+    strip.appendChild(pill);
+  }
+}
+
+function renderSchedule() {
+  const area = document.getElementById('scheduleArea');
+  const dow = selectedDate.getDay();
+  const schedule = getSchedule(dow);
+  const ds = dateStr(selectedDate);
+  const { done, note } = loadForDate(ds);
+
+  document.getElementById('noteInput').value = note;
+
+  if (!schedule) {
+    area.innerHTML = `
+      <div class="weekend-msg">
+        <div class="icon">🌸</div>
+        <h3>Rest day</h3>
+        <p>No structured schedule today.<br>Enjoy your time!</p>
+      </div>`;
+    updateProgress({}, 0);
+    return;
+  }
+
+  area.innerHTML = '<div class="section-label">Today\'s Blocks</div><div class="schedule" id="schedList"></div>';
+
+  const list = document.getElementById('schedList');
+  schedule.forEach(block => {
+    const isDone = !!done[block.id];
+    const div = document.createElement('div');
+    div.className = `block ${block.color}${isDone ? ' done' : ''}`;
+    div.innerHTML = `
+      <div class="block-check">
+        <span>✓</span>
+      </div>
+      <div class="block-info">
+        <div class="block-time">${block.time}</div>
+        <div class="block-title">${block.title}</div>
+        ${block.sub ? `<div class="block-sub">${block.sub}</div>` : ''}
+      </div>
+      <div class="block-emoji">${block.emoji}</div>
+    `;
+    div.addEventListener('click', () => toggleBlock(block.id));
+    list.appendChild(div);
+  });
+
+  updateProgress(done, schedule.length);
+}
+
+function updateProgress(done, total) {
+  const count = Object.values(done).filter(Boolean).length;
+  const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+  document.getElementById('progressText').textContent = `${count} / ${total} done`;
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+function toggleBlock(id) {
+  const ds = dateStr(selectedDate);
+  const { done, note } = loadForDate(ds);
+  done[id] = !done[id];
+  saveForDate(ds, done, note);
+  renderAll();
+}
+
+function renderAll() {
+  renderHeader();
+  renderDayStrip();
+  renderSchedule();
+}
+
+// ── Note saving ────────────────────────────────────────────────────────────
+document.getElementById('noteInput').addEventListener('input', function() {
+  const ds = dateStr(selectedDate);
+  const { done } = loadForDate(ds);
+  saveForDate(ds, done, this.value);
+});
+
+// ── External links ─────────────────────────────────────────────────────────
+function openCalendar(e) {
+  e.preventDefault();
+  // Try iOS calendar deep link, fall back to web
+  window.location.href = 'calshow://';
+  setTimeout(() => {
+    // If still here after 1s, open Apple Calendar web
+    window.open('https://www.icloud.com/calendar/', '_blank');
+  }, 800);
+}
+
+function openReminders(e) {
+  e.preventDefault();
+  window.location.href = 'x-apple-reminderkit://';
+  setTimeout(() => {
+    window.open('https://www.icloud.com/reminders/', '_blank');
+  }, 800);
+}
+
+// ── Motivational quotes ────────────────────────────────────────────────────
+const quotes = [
+  { q: "Every page you write today is a page closer to done.", s: "Your 5 years of work matter. Keep going, Aggie. 🤓" },
+  { q: "A PhD is not a sprint — it's a long, brave act of curiosity.", s: "You're doing something most people never dare to start." },
+  { q: "The mornings you protect are the ones that change everything.", s: "Deep work is a gift you give your future self." },
+  { q: "You are building something no one else could build.", s: "Your research is uniquely yours. That's extraordinary." },
+  { q: "Hard days are part of the work, not a sign it's wrong.", s: "Rest when you need to. Then return. That's the whole secret." },
+  { q: "Even slow progress is still progress.", s: "A paragraph, an idea, a rereading — all of it counts." },
+  { q: "You show up for your daughter and for your thesis. That's not small.", s: "Doing both takes real courage and real love." },
+];
+
+function renderMotiv() {
+  const idx = new Date().getDay() % quotes.length;
+  const q = quotes[idx];
+  document.getElementById('motivQuote').textContent = `"${q.q}"`;
+  document.getElementById('motivSub').textContent = q.s;
+}
+
+
+renderMotiv();
+renderAll();
+</script>
+</body>
+</html>
