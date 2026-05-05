@@ -171,23 +171,29 @@ align-items: center;
 gap: 6px;
 padding: 7px 13px;
 border-radius: 20px;
-border: 1px solid rgba(249,245,238,0.2);
-background: rgba(249,245,238,0.08);
-color: var(–cream);
+border: 1px solid rgba(249,245,238,0.3);
+background: rgba(249,245,238,0.12);
+color: #F9F5EE !important;
 font-family: ‘DM Sans’, sans-serif;
 font-size: 12px;
 font-weight: 500;
 cursor: pointer;
-text-decoration: none;
+text-decoration: none !important;
+-webkit-text-fill-color: #F9F5EE !important;
 transition: background 0.2s, border-color 0.2s;
 }
 
-.quick-btn:hover {
-background: rgba(249,245,238,0.16);
-border-color: rgba(249,245,238,0.4);
+.quick-btn * {
+color: #F9F5EE !important;
+-webkit-text-fill-color: #F9F5EE !important;
 }
 
-.quick-btn .icon { font-size: 14px; }
+.quick-btn:visited,
+.quick-btn:active,
+.quick-btn:link {
+color: #F9F5EE !important;
+-webkit-text-fill-color: #F9F5EE !important;
+}
 
 /* Day strip */
 .day-strip {
@@ -271,17 +277,18 @@ margin-bottom: 7px;
 }
 
 .progress-track {
-background: rgba(28,26,23,0.1);
+background: rgba(28,26,23,0.15);
 border-radius: 4px;
-height: 5px;
+height: 7px;
 overflow: hidden;
 }
 
 .progress-fill {
 height: 100%;
-background: var(–accent);
+background: #C4622D;
 border-radius: 4px;
 transition: width 0.5s ease;
+min-width: 4px;
 }
 
 /* Schedule */
