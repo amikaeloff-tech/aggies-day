@@ -28,9 +28,9 @@
 body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;min-height:100vh;padding-bottom:60px;}
 
 /* ── HEADER ── */
-header{background:#1C1A17;color:var(–cream);padding:28px 24px 22px;position:relative;overflow:hidden;}
-header::before{content:’’;position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(196,98,45,0.18);}
-.header-title{font-family:‘DM Serif Display’,serif;font-size:28px;line-height:1.1;}
+header{background:#1C1A17;color:#F9F5EE;padding:28px 24px 22px;position:relative;}
+header::before{content:’’;position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(196,98,45,0.18);pointer-events:none;}
+.header-title{font-family:‘DM Serif Display’,serif;font-size:28px;line-height:1.1;color:#F9F5EE;}
 .header-title em{font-style:italic;color:#D4825A;}
 .header-date{font-size:12px;font-weight:300;color:rgba(249,245,238,0.55);margin-top:4px;letter-spacing:.5px;text-transform:uppercase;}
 .quick-links{display:flex;gap:8px;margin-top:18px;}
@@ -60,15 +60,15 @@ header::before{content:’’;position:absolute;top:-40px;right:-40px;width:180p
 .cal-hint button{flex-shrink:0;padding:6px 14px;background:#3B5F8A;color:white;border:none;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;}
 
 /* ── MOTIVATION BANNER ── */
-.motiv-banner{margin:14px 20px 0;background:linear-gradient(135deg,#1C1A17 0%,#3B3528 100%);border-radius:16px;padding:18px 20px;position:relative;overflow:hidden;}
-.motiv-banner::before{content:‘✦’;position:absolute;right:18px;top:12px;font-size:38px;opacity:.07;color:var(–cream);}
-.motiv-quote{font-family:‘DM Serif Display’,serif;font-style:italic;font-size:15px;color:var(–cream);line-height:1.5;margin-bottom:8px;}
-.motiv-sub{font-size:11.5px;color:rgba(249,245,238,0.45);line-height:1.5;}
+.motiv-banner{margin:14px 20px 0;background:linear-gradient(135deg,#1C1A17 0%,#3B3528 100%);border-radius:16px;padding:18px 20px;position:relative;}
+.motiv-banner::before{content:‘✦’;position:absolute;right:18px;top:12px;font-size:38px;opacity:.07;color:#F9F5EE;pointer-events:none;}
+.motiv-quote{font-family:‘DM Serif Display’,serif;font-style:italic;font-size:15px;color:#F9F5EE;line-height:1.6;margin-bottom:8px;}
+.motiv-sub{font-size:11.5px;color:rgba(249,245,238,0.5);line-height:1.5;}
 .motiv-tag{display:inline-block;margin-top:10px;padding:4px 10px;background:rgba(196,98,45,0.25);color:#D4825A;border-radius:20px;font-size:11px;font-weight:500;}
 
 /* ── SCHEDULE ── */
 .section-label{padding:16px 20px 4px;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(–muted);font-weight:500;}
-.schedule{padding:0 20px;display:flex;flex-direction:column;gap:10px;padding-bottom:4px;}
+.schedule{padding:0 20px 16px 20px;display:flex;flex-direction:column;gap:10px;}
 .block{border-radius:14px;padding:14px 16px;display:flex;align-items:flex-start;gap:14px;cursor:pointer;transition:transform .15s;}
 .block:active{transform:scale(0.98);}
 .block.done{opacity:.5;}
@@ -83,13 +83,13 @@ header::before{content:’’;position:absolute;top:-40px;right:-40px;width:180p
 .block-sub{font-size:12px;opacity:.6;margin-top:2px;}
 .block-emoji{font-size:22px;margin-top:2px;}
 
-/* Block colors */
-.b-walk   {background:var(–mauve);color:var(–mauve-dark);}
-.b-deep   {background:var(–green-light);color:var(–green);}
-.b-lunch  {background:var(–gold-light);color:var(–gold);}
-.b-workout{background:var(–accent-light);color:var(–accent);}
-.b-light  {background:var(–green-light);color:var(–green);}
-.b-family {background:var(–mauve);color:var(–mauve-dark);}
+/* Block colors — explicit hex values to avoid any variable resolution issue */
+.b-walk   {background:#EDE0F0 !important;color:#7B5EA7 !important;}
+.b-deep   {background:#D6E9DC !important;color:#2D6A4F !important;}
+.b-lunch  {background:#F2E8CF !important;color:#B8922A !important;}
+.b-workout{background:#F0DDD3 !important;color:#C4622D !important;}
+.b-light  {background:#D6E9DC !important;color:#2D6A4F !important;}
+.b-family {background:#EDE0F0 !important;color:#7B5EA7 !important;}
 
 /* Pomodoro trigger */
 .pomo-trigger{display:inline-flex;align-items:center;gap:5px;margin-top:8px;padding:5px 10px;background:rgba(45,106,79,0.15);border:1px solid rgba(45,106,79,0.3);border-radius:20px;font-size:11px;font-weight:500;color:#1F5C3A;cursor:pointer;font-family:‘DM Sans’,sans-serif;}
@@ -123,7 +123,7 @@ header::before{content:’’;position:absolute;top:-40px;right:-40px;width:180p
 }
 
 /* ── POMODORO OVERLAY ── */
-.pomo-overlay{display:none;position:fixed;inset:0;background:var(–cream);z-index:500;overflow-y:auto;padding-bottom:40px;}
+.pomo-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:#F9F5EE;z-index:500;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .pomo-overlay.open{display:block;}
 .pomo-header{background:#1C1A17;color:var(–cream);padding:20px 24px 18px;display:flex;align-items:center;gap:14px;}
 .pomo-back{background:rgba(249,245,238,0.1);border:1px solid rgba(249,245,238,0.2);color:#F9F5EE;border-radius:10px;padding:7px 14px;font-family:‘DM Sans’,sans-serif;font-size:13px;cursor:pointer;}
