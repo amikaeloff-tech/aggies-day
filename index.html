@@ -5,971 +5,199 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aggie's Day</title>
-<script>
-// Generate icon as canvas and set as apple-touch-icon
-window.addEventListener('DOMContentLoaded', () => {
-  const canvas = document.createElement('canvas');
-  canvas.width = 512; canvas.height = 512;
-  const ctx = canvas.getContext('2d');
-
-// Background — soft dusty rose gradient
-const bg = ctx.createLinearGradient(0, 0, 512, 512);
-bg.addColorStop(0, ‘#E8D5D0’);
-bg.addColorStop(1, ‘#C9B8C4’);
-ctx.fillStyle = bg;
-roundRect(ctx, 0, 0, 512, 512, 100);
-ctx.fill();
-
-// Subtle inner glow
-const glow = ctx.createRadialGradient(256, 180, 0, 256, 256, 320);
-glow.addColorStop(0, ‘rgba(255,245,242,0.45)’);
-glow.addColorStop(1, ‘rgba(255,245,242,0)’);
-ctx.fillStyle = glow;
-ctx.fillRect(0, 0, 512, 512);
-
-// Letter A — serif elegant
-ctx.fillStyle = ‘#5C3D4A’;
-ctx.font = ‘bold 260px Georgia, serif’;
-ctx.textAlign = ‘center’;
-ctx.textBaseline = ‘middle’;
-ctx.fillText(‘A’, 258, 248);
-
-// Small dot decoration
-ctx.fillStyle = ‘rgba(92,61,74,0.35)’;
-ctx.beginPath();
-ctx.arc(256, 390, 18, 0, Math.PI * 2);
-ctx.fill();
-
-function roundRect(ctx, x, y, w, h, r) {
-ctx.beginPath();
-ctx.moveTo(x + r, y);
-ctx.lineTo(x + w - r, y);
-ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-ctx.lineTo(x + w, y + h - r);
-ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-ctx.lineTo(x + r, y + h);
-ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-ctx.lineTo(x, y + r);
-ctx.quadraticCurveTo(x, y, x + r, y);
-ctx.closePath();
-}
-
-const dataURL = canvas.toDataURL(‘image/png’);
-const link = document.createElement(‘link’);
-link.rel = ‘apple-touch-icon’;
-link.href = dataURL;
-document.head.appendChild(link);
-
-// Also set favicon
-const favicon = document.createElement(‘link’);
-favicon.rel = ‘icon’;
-favicon.href = dataURL;
-document.head.appendChild(favicon);
-});
-
-function roundRect(ctx, x, y, w, h, r) {
-ctx.beginPath();
-ctx.moveTo(x + r, y);
-ctx.lineTo(x + w - r, y);
-ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-ctx.lineTo(x + w, y + h - r);
-ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-ctx.lineTo(x + r, y + h);
-ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-ctx.lineTo(x, y + r);
-ctx.quadraticCurveTo(x, y, x + r, y);
-ctx.closePath();
-}
-</script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Aggie's Day">
-
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --cream: #F9F5EE;
-    --warm: #EDE8DE;
-    --ink: #1C1A17;
-    --muted: #8A8478;
-    --accent: #C4622D;
-    --accent-light: #F0DDD3;
-    --green: #2D6A4F;
-    --green-light: #D6E9DC;
-    --blue: #3B5F8A;
-    --blue-light: #D4E0EF;
-    --gold: #B8922A;
-    --gold-light: #F2E8CF;
-    --lilac: #7B6FA0;
-    --lilac-light: #E4E0F0;
-  }
-
-- { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-background: var(–cream);
-color: var(–ink);
-font-family: ‘DM Sans’, sans-serif;
-min-height: 100vh;
-padding: 0 0 60px 0;
+:root {
+  --cream: #F9F5EE;
+  --warm:  #EDE8DE;
+  --ink:   #1C1A17;
+  --muted: #8A8478;
+  --accent:#C4622D;
+  --accent-light:#F0DDD3;
+  --green: #2D6A4F;
+  --green-light:#D6E9DC;
+  --gold:  #B8922A;
+  --gold-light:#F2E8CF;
+  --mauve: #EDE0F0;
+  --mauve-dark:#7B5EA7;
 }
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;min-height:100vh;padding-bottom:60px;}
 
-header {
-background: #1C1A17;
-color: var(–cream);
-padding: 28px 24px 22px;
-position: relative;
-overflow: hidden;
-}
+/* ── HEADER ── */
+header{background:#1C1A17;color:var(–cream);padding:28px 24px 22px;position:relative;overflow:hidden;}
+header::before{content:’’;position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(196,98,45,0.18);}
+.header-title{font-family:‘DM Serif Display’,serif;font-size:28px;line-height:1.1;}
+.header-title em{font-style:italic;color:#D4825A;}
+.header-date{font-size:12px;font-weight:300;color:rgba(249,245,238,0.55);margin-top:4px;letter-spacing:.5px;text-transform:uppercase;}
+.quick-links{display:flex;gap:8px;margin-top:18px;}
+.quick-btn{display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:20px;border:1px solid rgba(249,245,238,0.25);background:rgba(249,245,238,0.1);color:#F9F5EE;font-family:‘DM Sans’,sans-serif;font-size:12px;font-weight:500;cursor:pointer;}
 
-header::before {
-content: ‘’;
-position: absolute;
-top: -40px; right: -40px;
-width: 180px; height: 180px;
-border-radius: 50%;
-background: rgba(196,98,45,0.18);
-}
+/* ── DAY STRIP ── */
+.day-strip{display:flex;gap:8px;padding:16px 20px;overflow-x:auto;scrollbar-width:none;background:var(–warm);border-bottom:1px solid rgba(28,26,23,0.08);}
+.day-strip::-webkit-scrollbar{display:none;}
+.day-pill{flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:8px 14px;border-radius:12px;cursor:pointer;background:transparent;border:1.5px solid transparent;transition:all .2s;font-family:‘DM Sans’,sans-serif;}
+.day-pill.active{background:#1C1A17;color:var(–cream);}
+.day-name{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.8px;color:var(–muted);}
+.day-pill.active .day-name{color:rgba(249,245,238,0.65);}
+.day-num{font-family:‘DM Serif Display’,serif;font-size:20px;line-height:1.2;margin-top:1px;}
+.day-pill.active .day-num{color:#F9F5EE;}
+.dot{width:4px;height:4px;border-radius:50%;background:var(–accent);margin-top:4px;opacity:0;}
+.day-pill.has-done .dot{opacity:1;}
 
-.header-top {
-display: flex;
-justify-content: space-between;
-align-items: flex-start;
-margin-bottom: 6px;
-}
+/* ── PROGRESS ── */
+.progress-wrap{padding:14px 20px 10px;background:var(–warm);}
+.progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(–muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px;}
+.progress-track{background:rgba(28,26,23,0.12);border-radius:4px;height:6px;overflow:hidden;}
+.progress-fill{height:100%;background:#C4622D;border-radius:4px;transition:width .5s ease;}
 
-.header-title {
-font-family: ‘DM Serif Display’, serif;
-font-size: 28px;
-line-height: 1.1;
-letter-spacing: -0.5px;
-}
+/* ── CALENDAR HINT ── */
+.cal-hint{margin:14px 20px 0;background:#D4E0EF;border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px;}
+.cal-hint p{font-size:12.5px;color:#3B5F8A;line-height:1.4;flex:1;}
+.cal-hint button{flex-shrink:0;padding:6px 14px;background:#3B5F8A;color:white;border:none;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;}
 
-.header-title em {
-font-style: italic;
-color: #D4825A;
-}
+/* ── MOTIVATION BANNER ── */
+.motiv-banner{margin:14px 20px 0;background:linear-gradient(135deg,#1C1A17 0%,#3B3528 100%);border-radius:16px;padding:18px 20px;position:relative;overflow:hidden;}
+.motiv-banner::before{content:‘✦’;position:absolute;right:18px;top:12px;font-size:38px;opacity:.07;color:var(–cream);}
+.motiv-quote{font-family:‘DM Serif Display’,serif;font-style:italic;font-size:15px;color:var(–cream);line-height:1.5;margin-bottom:8px;}
+.motiv-sub{font-size:11.5px;color:rgba(249,245,238,0.45);line-height:1.5;}
+.motiv-tag{display:inline-block;margin-top:10px;padding:4px 10px;background:rgba(196,98,45,0.25);color:#D4825A;border-radius:20px;font-size:11px;font-weight:500;}
 
-.header-date {
-font-size: 12px;
-font-weight: 300;
-color: rgba(249,245,238,0.55);
-margin-top: 4px;
-letter-spacing: 0.5px;
-text-transform: uppercase;
-}
-
-.quick-links {
-display: flex;
-gap: 8px;
-margin-top: 18px;
-}
-
-.quick-btn {
-display: flex;
-align-items: center;
-gap: 6px;
-padding: 7px 13px;
-border-radius: 20px;
-border: 1px solid rgba(249,245,238,0.3);
-background: rgba(249,245,238,0.12);
-color: #F9F5EE !important;
-font-family: ‘DM Sans’, sans-serif;
-font-size: 12px;
-font-weight: 500;
-cursor: pointer;
-text-decoration: none !important;
--webkit-text-fill-color: #F9F5EE !important;
-transition: background 0.2s, border-color 0.2s;
-}
-
-.quick-btn * {
-color: #F9F5EE !important;
--webkit-text-fill-color: #F9F5EE !important;
-}
-
-.quick-btn:visited,
-.quick-btn:active,
-.quick-btn:link {
-color: #F9F5EE !important;
--webkit-text-fill-color: #F9F5EE !important;
-}
-
-/* Day strip */
-.day-strip {
-display: flex;
-gap: 8px;
-padding: 16px 20px;
-overflow-x: auto;
-scrollbar-width: none;
-background: var(–warm);
-border-bottom: 1px solid rgba(28,26,23,0.08);
-}
-
-.day-strip::-webkit-scrollbar { display: none; }
-
-.day-pill {
-flex-shrink: 0;
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 8px 14px;
-border-radius: 12px;
-cursor: pointer;
-background: transparent;
-border: 1.5px solid transparent;
-transition: all 0.2s;
-font-family: ‘DM Sans’, sans-serif;
-}
-
-.day-pill.active {
-background: var(–ink);
-color: var(–cream);
-}
-
-.day-pill:not(.active):hover {
-border-color: rgba(28,26,23,0.15);
-background: rgba(28,26,23,0.04);
-}
-
-.day-pill .day-name {
-font-size: 11px;
-font-weight: 500;
-text-transform: uppercase;
-letter-spacing: 0.8px;
-color: var(–muted);
-}
-
-.day-pill.active .day-name {
-color: rgba(249,245,238,0.7) !important;
--webkit-text-fill-color: rgba(249,245,238,0.7) !important;
-}
-
-.day-pill.active .day-num {
-color: #F9F5EE !important;
--webkit-text-fill-color: #F9F5EE !important;
-}
-
-.day-pill .day-num {
-font-family: ‘DM Serif Display’, serif;
-font-size: 20px;
-line-height: 1.2;
-margin-top: 1px;
-}
-
-.day-pill .dot {
-width: 4px; height: 4px;
-border-radius: 50%;
-background: var(–accent);
-margin-top: 4px;
-opacity: 0;
-transition: opacity 0.2s;
-}
-
-.day-pill.has-done .dot { opacity: 1; }
-
-/* Progress bar */
-.progress-bar-wrap {
-padding: 14px 20px 10px;
-background: var(–warm);
-}
-
-.progress-label {
-display: flex;
-justify-content: space-between;
-font-size: 11px;
-color: var(–muted);
-text-transform: uppercase;
-letter-spacing: 0.6px;
-margin-bottom: 7px;
-}
-
-.progress-track {
-background: rgba(28,26,23,0.15);
-border-radius: 4px;
-height: 7px;
-overflow: hidden;
-}
-
-.progress-fill {
-height: 100%;
-background: #C4622D;
-border-radius: 4px;
-transition: width 0.5s ease;
-min-width: 4px;
-}
-
-/* Schedule */
-.schedule {
-padding: 16px 20px;
-display: flex;
-flex-direction: column;
-gap: 10px;
-}
-
-.block {
-border-radius: 14px;
-padding: 14px 16px;
-display: flex;
-align-items: center;
-gap: 14px;
-cursor: pointer;
-transition: transform 0.15s, box-shadow 0.15s;
-position: relative;
-overflow: hidden;
-}
-
-.block:active { transform: scale(0.98); }
-
-.block::after {
-content: ‘’;
-position: absolute;
-inset: 0;
-background: rgba(255,255,255,0);
-transition: background 0.2s;
-}
-
-.block:hover::after { background: rgba(255,255,255,0.08); }
-
-.block.done { opacity: 0.55; }
-
-.block.done .block-title { text-decoration: line-through; }
-
-.block-check {
-width: 26px; height: 26px;
-border-radius: 50%;
-border: 2px solid currentColor;
-flex-shrink: 0;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 13px;
-transition: background 0.2s;
-position: relative;
-z-index: 1;
-}
-
-.block.done .block-check {
-background: currentColor;
-color: white;
-}
-
-.block-check span { display: none; }
-.block.done .block-check span { display: block; filter: invert(1); }
-
-.block-info { flex: 1; position: relative; z-index: 1; }
-
-.block-time {
-font-size: 11px;
-font-weight: 500;
-letter-spacing: 0.5px;
-opacity: 0.65;
-margin-bottom: 2px;
-text-transform: uppercase;
-}
-
-.block-title {
-font-family: ‘DM Serif Display’, serif;
-font-size: 16px;
-line-height: 1.2;
-}
-
-.block-sub {
-font-size: 12px;
-opacity: 0.6;
-margin-top: 2px;
-}
-
-.block-emoji { font-size: 22px; position: relative; z-index: 1; }
+/* ── SCHEDULE ── */
+.section-label{padding:16px 20px 4px;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(–muted);font-weight:500;}
+.schedule{padding:0 20px;display:flex;flex-direction:column;gap:10px;padding-bottom:4px;}
+.block{border-radius:14px;padding:14px 16px;display:flex;align-items:flex-start;gap:14px;cursor:pointer;transition:transform .15s;}
+.block:active{transform:scale(0.98);}
+.block.done{opacity:.5;}
+.block.done .block-title{text-decoration:line-through;}
+.block-check{width:26px;height:26px;border-radius:50%;border:2px solid currentColor;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;margin-top:2px;}
+.block.done .block-check{background:currentColor;}
+.block-check-inner{display:none;filter:invert(1);font-size:12px;}
+.block.done .block-check-inner{display:block;}
+.block-info{flex:1;}
+.block-time{font-size:11px;font-weight:500;letter-spacing:.5px;opacity:.65;margin-bottom:2px;text-transform:uppercase;}
+.block-title{font-family:‘DM Serif Display’,serif;font-size:16px;line-height:1.2;}
+.block-sub{font-size:12px;opacity:.6;margin-top:2px;}
+.block-emoji{font-size:22px;margin-top:2px;}
 
 /* Block colors */
-.b-walk    { background: #EDE0F0; color: #7B5EA7; }
-.b-deep    { background: #D6E9DC; color: #1F5C3A; }
-.b-lunch   { background: var(–gold-light);  color: var(–gold); }
-.b-workout { background: var(–accent-light);color: var(–accent); }
-.b-light   { background: #D6E9DC; color: #1F5C3A; }
-.b-family  { background: #EDE0F0; color: #7B5EA7; }
-.b-other   { background: var(–warm); color: var(–muted); border: 1.5px dashed rgba(28,26,23,0.15); }
+.b-walk   {background:var(–mauve);color:var(–mauve-dark);}
+.b-deep   {background:var(–green-light);color:var(–green);}
+.b-lunch  {background:var(–gold-light);color:var(–gold);}
+.b-workout{background:var(–accent-light);color:var(–accent);}
+.b-light  {background:var(–green-light);color:var(–green);}
+.b-family {background:var(–mauve);color:var(–mauve-dark);}
 
-/* Section label */
-.section-label {
-padding: 4px 20px 0;
-font-size: 10px;
-text-transform: uppercase;
-letter-spacing: 1.2px;
-color: var(–muted);
-font-weight: 500;
+/* Pomodoro trigger */
+.pomo-trigger{display:inline-flex;align-items:center;gap:5px;margin-top:8px;padding:5px 10px;background:rgba(45,106,79,0.15);border:1px solid rgba(45,106,79,0.3);border-radius:20px;font-size:11px;font-weight:500;color:#1F5C3A;cursor:pointer;font-family:‘DM Sans’,sans-serif;}
+
+/* ── NOTE ── */
+.note-area{margin:14px 20px 0;background:white;border-radius:14px;padding:14px 16px;border:1.5px solid rgba(28,26,23,0.08);}
+.note-label{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(–muted);margin-bottom:8px;}
+.note-input{width:100%;border:none;outline:none;background:transparent;font-family:‘DM Sans’,sans-serif;font-size:14px;color:var(–ink);resize:none;min-height:60px;line-height:1.6;}
+.note-input::placeholder{color:var(–muted);}
+
+/* ── BOTTOM ACTIONS ── */
+.bottom-actions{display:flex;gap:10px;padding:16px 20px 0;}
+.action-btn{flex:1;padding:13px;border-radius:14px;border:none;font-family:‘DM Sans’,sans-serif;font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;}
+.btn-calendar{background:#1C1A17;color:#F9F5EE;}
+.btn-reminders{background:#C4622D;color:white;}
+
+/* ── WEEKEND ── */
+.weekend-msg{margin:20px;padding:24px;background:var(–mauve);border-radius:16px;text-align:center;color:var(–mauve-dark);}
+.weekend-msg .icon{font-size:36px;margin-bottom:10px;}
+.weekend-msg h3{font-family:‘DM Serif Display’,serif;font-size:22px;margin-bottom:6px;}
+.weekend-msg p{font-size:14px;opacity:.75;}
+
+/* ── SUNFLOWER ANIMATION ── */
+.sunflower-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;overflow:hidden;}
+.sunflower{position:absolute;animation:floatUp 1.8s ease-out forwards;opacity:0;}
+@keyframes floatUp{
+0%  {opacity:0;transform:translateY(0) scale(.5) rotate(0deg);}
+20% {opacity:1;transform:translateY(-60px) scale(1.1) rotate(15deg);}
+80% {opacity:1;transform:translateY(-180px) scale(1) rotate(-10deg);}
+100%{opacity:0;transform:translateY(-260px) scale(.8) rotate(20deg);}
 }
 
-/* Note area */
-.note-area {
-margin: 8px 20px 0;
-background: white;
-border-radius: 14px;
-padding: 14px 16px;
-border: 1.5px solid rgba(28,26,23,0.08);
-}
-
-.note-label {
-font-size: 11px;
-text-transform: uppercase;
-letter-spacing: 0.8px;
-color: var(–muted);
-margin-bottom: 8px;
-}
-
-.note-input {
-width: 100%;
-border: none;
-outline: none;
-background: transparent;
-font-family: ‘DM Sans’, sans-serif;
-font-size: 14px;
-color: var(–ink);
-resize: none;
-min-height: 60px;
-line-height: 1.6;
-}
-
-.note-input::placeholder { color: var(–muted); }
-
-/* Floating reminder to open calendar */
-.calendar-hint {
-margin: 12px 20px 0;
-background: var(–blue-light);
-border-radius: 12px;
-padding: 12px 16px;
-display: flex;
-align-items: center;
-gap: 10px;
-}
-
-.calendar-hint p {
-font-size: 12.5px;
-color: var(–blue);
-line-height: 1.4;
-flex: 1;
-}
-
-.calendar-hint a {
-flex-shrink: 0;
-padding: 6px 14px;
-background: var(–blue);
-color: white;
-border-radius: 20px;
-font-size: 12px;
-font-weight: 500;
-text-decoration: none;
-white-space: nowrap;
-}
-
-/* Bottom actions */
-.bottom-actions {
-display: flex;
-gap: 10px;
-padding: 16px 20px 0;
-}
-
-.action-btn {
-flex: 1;
-padding: 13px;
-border-radius: 14px;
-border: none;
-font-family: ‘DM Sans’, sans-serif;
-font-size: 13px;
-font-weight: 500;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 7px;
-text-decoration: none;
-transition: opacity 0.2s;
-}
-
-.action-btn:hover { opacity: 0.85; }
-
-.btn-calendar {
-background: var(–ink);
-color: var(–cream);
-}
-
-.btn-reminders {
-background: var(–accent);
-color: white;
-}
-
-/* Weekend message */
-.weekend-msg {
-margin: 20px;
-padding: 24px;
-background: var(–green-light);
-border-radius: 16px;
-text-align: center;
-color: var(–green);
-}
-
-.weekend-msg .icon { font-size: 36px; margin-bottom: 10px; }
-.weekend-msg h3 {
-font-family: ‘DM Serif Display’, serif;
-font-size: 22px;
-margin-bottom: 6px;
-}
-
-.weekend-msg p { font-size: 14px; opacity: 0.75; }
-
-/* Motivational banner */
-.motiv-banner {
-margin: 14px 20px 0;
-background: linear-gradient(135deg, #1C1A17 0%, #3B3528 100%);
-border-radius: 16px;
-padding: 18px 20px;
-position: relative;
-overflow: hidden;
-}
-
-.motiv-banner::before {
-content: ‘✦’;
-position: absolute;
-right: 18px; top: 12px;
-font-size: 38px;
-opacity: 0.07;
-color: var(–cream);
-}
-
-.motiv-quote {
-font-family: ‘DM Serif Display’, serif;
-font-style: italic;
-font-size: 15px;
-color: var(–cream);
-line-height: 1.5;
-margin-bottom: 8px;
-}
-
-.motiv-sub {
-font-size: 11.5px;
-color: rgba(249,245,238,0.45);
-letter-spacing: 0.3px;
-line-height: 1.5;
-}
-
-.motiv-tag {
-display: inline-block;
-margin-top: 10px;
-padding: 4px 10px;
-background: rgba(196,98,45,0.25);
-color: #D4825A;
-border-radius: 20px;
-font-size: 11px;
-font-weight: 500;
-letter-spacing: 0.4px;
-}
-
-/* Sunflower animation */
-.sunflower-container {
-position: fixed;
-top: 0; left: 0;
-width: 100%; height: 100%;
-pointer-events: none;
-z-index: 9999;
-overflow: hidden;
-}
-
-.sunflower {
-position: absolute;
-font-size: 28px;
-animation: floatUp 1.8s ease-out forwards;
-opacity: 0;
-}
-
-@keyframes floatUp {
-0%   { opacity: 0; transform: translateY(0) scale(0.5) rotate(0deg); }
-20%  { opacity: 1; transform: translateY(-60px) scale(1.1) rotate(15deg); }
-80%  { opacity: 1; transform: translateY(-180px) scale(1) rotate(-10deg); }
-100% { opacity: 0; transform: translateY(-260px) scale(0.8) rotate(20deg); }
-}
-
-/* ── Pomodoro overlay ────────────────────────────────────────────────── */
-.pomo-overlay {
-display: none;
-position: fixed;
-inset: 0;
-background: var(–cream);
-z-index: 500;
-overflow-y: auto;
-padding-bottom: 40px;
-}
-
-.pomo-overlay.open { display: block; }
-
-.pomo-header {
-background: #1C1A17;
-color: var(–cream);
-padding: 20px 24px 18px;
-display: flex;
-align-items: center;
-gap: 14px;
-}
-
-.pomo-back {
-background: rgba(249,245,238,0.1);
-border: 1px solid rgba(249,245,238,0.2);
-color: #F9F5EE;
-border-radius: 10px;
-padding: 7px 14px;
-font-family: ‘DM Sans’, sans-serif;
-font-size: 13px;
-cursor: pointer;
-}
-
-.pomo-title {
-font-family: ‘DM Serif Display’, serif;
-font-size: 22px;
-color: var(–cream);
-}
-
-.pomo-title em { font-style: italic; color: #D4825A; }
-
-.pomo-mode-tabs {
-display: flex;
-gap: 0;
-margin: 20px 20px 0;
-background: var(–warm);
-border-radius: 12px;
-padding: 4px;
-}
-
-.pomo-tab {
-flex: 1;
-padding: 9px;
-border-radius: 9px;
-border: none;
-background: transparent;
-font-family: ‘DM Sans’, sans-serif;
-font-size: 11px;
-font-weight: 500;
-color: var(–muted);
-cursor: pointer;
-transition: all 0.2s;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-}
-
-.pomo-tab.active {
-background: white;
-color: var(–ink);
-box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-}
-
-.pomo-timer-wrap {
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 28px 20px 16px;
-}
-
-.pomo-ring-wrap {
-position: relative;
-width: 220px;
-height: 220px;
-}
-
-.pomo-svg {
-transform: rotate(-90deg);
-width: 220px;
-height: 220px;
-}
-
-.pomo-track {
-fill: none;
-stroke: var(–warm);
-stroke-width: 10;
-}
-
-.pomo-progress {
-fill: none;
-stroke: #C4622D;
-stroke-width: 10;
-stroke-linecap: round;
-stroke-dasharray: 628;
-stroke-dashoffset: 0;
-transition: stroke-dashoffset 1s linear, stroke 0.4s ease;
-}
-
-.pomo-progress.break-mode { stroke: #2D6A4F; }
-
-.pomo-center {
-position: absolute;
-inset: 0;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-}
-
-.pomo-time {
-font-family: ‘DM Serif Display’, serif;
-font-size: 50px;
-letter-spacing: -2px;
-line-height: 1;
-color: var(–ink);
-}
-
-.pomo-label {
-font-size: 11px;
-text-transform: uppercase;
-letter-spacing: 1.2px;
-color: var(–muted);
-margin-top: 6px;
-}
-
-.pomo-dots {
-display: flex;
-gap: 8px;
-margin-top: 16px;
-}
-
-.pomo-dot {
-width: 10px; height: 10px;
-border-radius: 50%;
-background: var(–warm);
-border: 1.5px solid var(–muted);
-transition: all 0.3s;
-}
-
-.pomo-dot.done { background: #C4622D; border-color: #C4622D; }
-.pomo-dot.current { background: transparent; border-color: #C4622D; transform: scale(1.2); }
-
-.pomo-controls {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 16px;
-padding: 4px 20px 16px;
-}
-
-.pomo-ctrl {
-border: none;
-cursor: pointer;
-border-radius: 50%;
-display: flex;
-align-items: center;
-justify-content: center;
-transition: all 0.2s;
-}
-
-.pomo-ctrl:active { transform: scale(0.93); }
-
-.pomo-ctrl.sec {
-width: 46px; height: 46px;
-background: var(–warm);
-color: var(–muted);
-font-size: 18px;
-}
-
-.pomo-ctrl.pri {
-width: 68px; height: 68px;
-background: #1C1A17;
-color: #F9F5EE;
-font-size: 26px;
-}
-
-.pomo-ctrl.pri.running { background: #C4622D; }
-
-.pomo-task {
-margin: 0 20px;
-background: white;
-border-radius: 14px;
-padding: 14px 16px;
-border: 1.5px solid rgba(28,26,23,0.08);
-}
-
-.pomo-task-label {
-font-size: 10px;
-text-transform: uppercase;
-letter-spacing: 1px;
-color: var(–muted);
-margin-bottom: 8px;
-}
-
-.pomo-task-input {
-width: 100%;
-border: none;
-outline: none;
-background: transparent;
-font-family: ‘DM Serif Display’, serif;
-font-style: italic;
-font-size: 16px;
-color: var(–ink);
-}
-
-.pomo-task-input::placeholder { color: #C5BFB4; }
-
-.pomo-stats {
-display: flex;
-gap: 10px;
-margin: 14px 20px 0;
-}
-
-.pomo-stat {
-flex: 1;
-background: var(–warm);
-border-radius: 12px;
-padding: 12px 14px;
-text-align: center;
-}
-
-.pomo-stat-num {
-font-family: ‘DM Serif Display’, serif;
-font-size: 24px;
-color: var(–ink);
-}
-
-.pomo-stat-label {
-font-size: 10px;
-text-transform: uppercase;
-letter-spacing: 0.8px;
-color: var(–muted);
-margin-top: 2px;
-}
-
-.pomo-settings {
-margin: 14px 20px 0;
-background: white;
-border-radius: 14px;
-padding: 14px 16px;
-border: 1.5px solid rgba(28,26,23,0.08);
-}
-
-.pomo-settings-label {
-font-size: 10px;
-text-transform: uppercase;
-letter-spacing: 1px;
-color: var(–muted);
-margin-bottom: 12px;
-}
-
-.pomo-setting-row {
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin-bottom: 10px;
-}
-
-.pomo-setting-row:last-child { margin-bottom: 0; }
-.pomo-setting-name { font-size: 14px; color: var(–ink); }
-
-.pomo-setting-ctrls {
-display: flex;
-align-items: center;
-gap: 12px;
-}
-
-.pomo-setting-btn {
-width: 28px; height: 28px;
-border-radius: 8px;
-border: 1.5px solid rgba(28,26,23,0.12);
-background: var(–warm);
-color: var(–ink);
-font-size: 16px;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-}
-
-.pomo-setting-val {
-font-family: ‘DM Serif Display’, serif;
-font-size: 18px;
-min-width: 30px;
-text-align: center;
-}
-
-.pomo-banner {
-display: none;
-position: fixed;
-bottom: 30px;
-left: 20px; right: 20px;
-background: #1C1A17;
-color: var(–cream);
-border-radius: 16px;
-padding: 16px 20px;
-z-index: 600;
-animation: slideUp 0.4s ease;
-}
-
-.pomo-banner.show { display: block; }
-
-.pomo-banner-title {
-font-family: ‘DM Serif Display’, serif;
-font-size: 18px;
-margin-bottom: 4px;
-}
-
-.pomo-banner-sub { font-size: 13px; color: rgba(249,245,238,0.6); }
-
-.pomo-banner-close {
-position: absolute;
-top: 12px; right: 14px;
-background: none;
-border: none;
-color: var(–cream);
-font-size: 18px;
-cursor: pointer;
-opacity: 0.6;
-}
-
-/* Pomodoro trigger button on deep work block */
-.pomo-trigger {
-display: inline-flex;
-align-items: center;
-gap: 5px;
-margin-top: 6px;
-padding: 5px 10px;
-background: rgba(45,106,79,0.15);
-border: 1px solid rgba(45,106,79,0.3);
-border-radius: 20px;
-font-size: 11px;
-font-weight: 500;
-color: #1F5C3A;
-cursor: pointer;
-font-family: ‘DM Sans’, sans-serif;
-}
-
-@keyframes slideUp {
-from { transform: translateY(20px); opacity: 0; }
-to   { transform: translateY(0); opacity: 1; }
-}
+/* ── POMODORO OVERLAY ── */
+.pomo-overlay{display:none;position:fixed;inset:0;background:var(–cream);z-index:500;overflow-y:auto;padding-bottom:40px;}
+.pomo-overlay.open{display:block;}
+.pomo-header{background:#1C1A17;color:var(–cream);padding:20px 24px 18px;display:flex;align-items:center;gap:14px;}
+.pomo-back{background:rgba(249,245,238,0.1);border:1px solid rgba(249,245,238,0.2);color:#F9F5EE;border-radius:10px;padding:7px 14px;font-family:‘DM Sans’,sans-serif;font-size:13px;cursor:pointer;}
+.pomo-header-title{font-family:‘DM Serif Display’,serif;font-size:22px;color:var(–cream);}
+.pomo-header-title em{font-style:italic;color:#D4825A;}
+.pomo-tabs{display:flex;gap:0;margin:20px 20px 0;background:var(–warm);border-radius:12px;padding:4px;}
+.pomo-tab{flex:1;padding:9px;border-radius:9px;border:none;background:transparent;font-family:‘DM Sans’,sans-serif;font-size:11px;font-weight:500;color:var(–muted);cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:.5px;}
+.pomo-tab.active{background:white;color:var(–ink);box-shadow:0 1px 4px rgba(0,0,0,.08);}
+.pomo-ring-wrap{display:flex;flex-direction:column;align-items:center;padding:28px 20px 16px;}
+.pomo-svg-wrap{position:relative;width:220px;height:220px;}
+.pomo-svg{transform:rotate(-90deg);width:220px;height:220px;}
+.pomo-track{fill:none;stroke:var(–warm);stroke-width:10;}
+.pomo-arc{fill:none;stroke:#C4622D;stroke-width:10;stroke-linecap:round;stroke-dasharray:628;stroke-dashoffset:0;transition:stroke-dashoffset 1s linear,stroke .4s;}
+.pomo-arc.brk{stroke:#2D6A4F;}
+.pomo-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.pomo-time{font-family:‘DM Serif Display’,serif;font-size:50px;letter-spacing:-2px;line-height:1;color:var(–ink);}
+.pomo-mode-label{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:var(–muted);margin-top:6px;}
+.pomo-dots{display:flex;gap:8px;margin-top:16px;}
+.pomo-dot{width:10px;height:10px;border-radius:50%;background:var(–warm);border:1.5px solid var(–muted);transition:all .3s;}
+.pomo-dot.done{background:#C4622D;border-color:#C4622D;}
+.pomo-dot.cur{background:transparent;border-color:#C4622D;transform:scale(1.2);}
+.pomo-ctrls{display:flex;align-items:center;justify-content:center;gap:16px;padding:4px 20px 16px;}
+.pomo-btn{border:none;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.pomo-btn:active{transform:scale(.93);}
+.pomo-btn.sec{width:46px;height:46px;background:var(–warm);color:var(–muted);font-size:18px;}
+.pomo-btn.pri{width:68px;height:68px;background:#1C1A17;color:#F9F5EE;font-size:26px;}
+.pomo-btn.pri.on{background:#C4622D;}
+.pomo-task-box{margin:0 20px;background:white;border-radius:14px;padding:14px 16px;border:1.5px solid rgba(28,26,23,.08);}
+.pomo-task-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(–muted);margin-bottom:8px;}
+.pomo-task-input{width:100%;border:none;outline:none;background:transparent;font-family:‘DM Serif Display’,serif;font-style:italic;font-size:16px;color:var(–ink);}
+.pomo-task-input::placeholder{color:#C5BFB4;}
+.pomo-stats{display:flex;gap:10px;margin:14px 20px 0;}
+.pomo-stat{flex:1;background:var(–warm);border-radius:12px;padding:12px 14px;text-align:center;}
+.pomo-stat-num{font-family:‘DM Serif Display’,serif;font-size:24px;color:var(–ink);}
+.pomo-stat-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(–muted);margin-top:2px;}
+.pomo-settings-box{margin:14px 20px 0;background:white;border-radius:14px;padding:14px 16px;border:1.5px solid rgba(28,26,23,.08);}
+.pomo-settings-lbl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(–muted);margin-bottom:12px;}
+.pomo-set-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.pomo-set-row:last-child{margin-bottom:0;}
+.pomo-set-name{font-size:14px;color:var(–ink);}
+.pomo-set-ctrls{display:flex;align-items:center;gap:12px;}
+.pomo-set-btn{width:28px;height:28px;border-radius:8px;border:1.5px solid rgba(28,26,23,.12);background:var(–warm);color:var(–ink);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.pomo-set-val{font-family:‘DM Serif Display’,serif;font-size:18px;min-width:30px;text-align:center;}
+
+/* ── TOAST BANNER ── */
+.toast{display:none;position:fixed;bottom:30px;left:20px;right:20px;background:#1C1A17;color:var(–cream);border-radius:16px;padding:16px 20px;z-index:999;animation:slideUp .4s ease;}
+.toast.show{display:block;}
+.toast-title{font-family:‘DM Serif Display’,serif;font-size:18px;margin-bottom:4px;}
+.toast-sub{font-size:13px;color:rgba(249,245,238,.6);}
+.toast-close{position:absolute;top:12px;right:14px;background:none;border:none;color:var(–cream);font-size:18px;cursor:pointer;opacity:.6;}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+</style>
 
 </head>
 <body>
 
 <div class="sunflower-container" id="sunflowerContainer"></div>
 
+<!-- MAIN APP -->
+
+<div id="mainApp">
+
 <header>
-  <div class="header-top">
-    <div>
-      <div class="header-title">Aggie's <em>Day</em></div>
-      <div class="header-date" id="headerDate"></div>
-    </div>
-  </div>
+  <div class="header-title">Aggie's <em>Day</em></div>
+  <div class="header-date" id="headerDate"></div>
   <div class="quick-links">
-    <button class="quick-btn" onclick="openCalendar(event)">
-      <span class="icon">📅</span> Calendar
-    </button>
-    <button class="quick-btn" onclick="openReminders(event)">
-      <span class="icon">🔔</span> Reminders
-    </button>
+    <button class="quick-btn" onclick="openCalendar()">📅 Calendar</button>
+    <button class="quick-btn" onclick="openReminders()">🔔 Reminders</button>
   </div>
 </header>
 
-<!-- Day selector -->
-
 <div class="day-strip" id="dayStrip"></div>
 
-<!-- Progress -->
-
-<div class="progress-bar-wrap">
+<div class="progress-wrap">
   <div class="progress-label">
     <span>Today's progress</span>
     <span id="progressText">0 / 0 done</span>
@@ -979,613 +207,499 @@ to   { transform: translateY(0); opacity: 1; }
   </div>
 </div>
 
-<!-- Calendar hint -->
-
-<div class="calendar-hint">
+<div class="cal-hint">
   <p>Tap <strong>Calendar</strong> above to check your appointments for today.</p>
-  <a href="#" onclick="openCalendar(event)">Open →</a>
+  <button onclick="openCalendar()">Open →</button>
 </div>
 
-<!-- Motivational banner -->
-
-<div class="motiv-banner" id="motivBanner">
+<div class="motiv-banner">
   <div class="motiv-quote" id="motivQuote"></div>
   <div class="motiv-sub" id="motivSub"></div>
   <span class="motiv-tag">📖 PhD in progress</span>
 </div>
 
-<!-- Schedule -->
-
-<div id="scheduleArea"></div>
-
-<!-- Note -->
+<div class="section-label">Today's Blocks</div>
+<div class="schedule" id="schedList"></div>
 
 <div class="note-area">
   <div class="note-label">📝 Today's note</div>
-  <textarea class="note-input" id="noteInput" placeholder="What do you want to focus on today? Any thought…" rows="3"></textarea>
+  <textarea class="note-input" id="noteInput" placeholder="What do you want to focus on today?" rows="3"></textarea>
 </div>
-
-<!-- Bottom actions -->
 
 <div class="bottom-actions">
-  <button class="action-btn btn-calendar" onclick="openCalendar(event)">
-    <span>📅</span> Open Calendar
-  </button>
-  <button class="action-btn btn-reminders" onclick="openReminders(event)">
-    <span>🔔</span> Open Reminders
-  </button>
+  <button class="action-btn btn-calendar" onclick="openCalendar()">📅 Open Calendar</button>
+  <button class="action-btn btn-reminders" onclick="openReminders()">🔔 Open Reminders</button>
 </div>
 
-<script>
-// ── State ──────────────────────────────────────────────────────────────────
-const today = new Date();
-const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+</div><!-- end mainApp -->
 
-// Storage helpers
-function storageKey(date, suffix) {
-  return `aggie_${date}_${suffix}`;
-}
+<!-- POMODORO OVERLAY -->
 
-function loadForDate(date) {
-  const doneRaw = localStorage.getItem(storageKey(date, 'done'));
-  const noteRaw = localStorage.getItem(storageKey(date, 'note'));
-  return {
-    done: doneRaw ? JSON.parse(doneRaw) : {},
-    note: noteRaw || ''
-  };
-}
-
-function saveForDate(date, done, note) {
-  localStorage.setItem(storageKey(date, 'done'), JSON.stringify(done));
-  localStorage.setItem(storageKey(date, 'note'), note);
-}
-
-function dateStr(d) {
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-}
-
-// ── Schedule definition ────────────────────────────────────────────────────
-function getSchedule(dayOfWeek) {
-  const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
-  if (isWeekend) return null;
-
-  // Wednesday special schedule
-  if (dayOfWeek === 3) {
-    return [
-      {
-        id: 'family-morning',
-        time: 'Morning – 14:00',
-        title: 'Time with Your Daughter',
-        sub: 'Precious Wednesday morning together 🌸',
-        emoji: '👧',
-        color: 'b-family'
-      },
-      {
-        id: 'light',
-        time: '15:00 – 16:00',
-        title: 'Light PhD Work',
-        sub: 'If energy allows — no pressure 📚',
-        emoji: '🤓',
-        color: 'b-light'
-      },
-      {
-        id: 'family-afternoon',
-        time: '16:00 – 21:00',
-        title: 'Back to Your Daughter',
-        sub: 'Evening together 🌿',
-        emoji: '👧',
-        color: 'b-family'
-      }
-    ];
-  }
-
-  const isWorkoutDay = dayOfWeek === 2 || dayOfWeek === 4; // Tue, Thu
-
-  const blocks = [
-    {
-      id: 'walk',
-      time: '8:30 – 9:00',
-      title: 'Morning Walk',
-      sub: '30 min outside',
-      emoji: '🚶',
-      color: 'b-walk'
-    },
-    {
-      id: 'deep',
-      time: '9:00 – 12:00',
-      title: 'Deep Work',
-      sub: 'PhD — protected focus time',
-      emoji: '🤓',
-      color: 'b-deep'
-    },
-    {
-      id: 'lunch',
-      time: '12:00 – 13:00',
-      title: 'Lunch Break',
-      sub: isWorkoutDay ? 'Includes 30 min workout today 💪' : '🦵 Gentle reminder: maybe a little leg stretch today?',
-      emoji: '🍽️',
-      color: 'b-lunch'
-    },
-  ];
-
-  if (isWorkoutDay) {
-    blocks.push({
-      id: 'workout',
-      time: '12:00 – 12:30',
-      title: 'Workout',
-      sub: 'During lunch — 30 min',
-      emoji: '💪',
-      color: 'b-workout'
-    });
-  }
-
-  blocks.push(
-    {
-      id: 'light',
-      time: '13:30 – 15:00',
-      title: 'Light PhD Work',
-      sub: 'Admin, emails, reading',
-      emoji: '📚',
-      color: 'b-light'
-    },
-    {
-      id: 'family',
-      time: '16:00 – 21:00',
-      title: 'Quiet Time',
-      sub: 'With your daughter 🌿',
-      emoji: '👧',
-      color: 'b-family'
-    }
-  );
-
-  return blocks;
-}
-
-// ── Selected date ──────────────────────────────────────────────────────────
-let selectedDate = today;
-
-// ── Render ─────────────────────────────────────────────────────────────────
-function renderHeader() {
-  const d = selectedDate;
-  document.getElementById('headerDate').textContent =
-    `${DAYS[d.getDay()]}, ${MONTHS[d.getMonth()]} ${d.getDate()}`;
-}
-
-function renderDayStrip() {
-  const strip = document.getElementById('dayStrip');
-  strip.innerHTML = '';
-
-  // show 7 days: 3 before today, today, 3 after
-  for (let i = -3; i <= 3; i++) {
-    const d = new Date(today);
-    d.setDate(today.getDate() + i);
-    const ds = dateStr(d);
-    const { done } = loadForDate(ds);
-    const hasDone = Object.values(done).some(Boolean);
-
-    const pill = document.createElement('div');
-    pill.className = 'day-pill' +
-      (dateStr(d) === dateStr(selectedDate) ? ' active' : '') +
-      (hasDone ? ' has-done' : '');
-
-    pill.innerHTML = `
-      <div class="day-name">${DAYS[d.getDay()]}</div>
-      <div class="day-num">${d.getDate()}</div>
-      <div class="dot"></div>
-    `;
-
-    pill.addEventListener('click', () => {
-      selectedDate = d;
-      renderAll();
-    });
-
-    strip.appendChild(pill);
-  }
-}
-
-function renderSchedule() {
-  const area = document.getElementById('scheduleArea');
-  const dow = selectedDate.getDay();
-  const schedule = getSchedule(dow);
-  const ds = dateStr(selectedDate);
-  const { done, note } = loadForDate(ds);
-
-  document.getElementById('noteInput').value = note;
-
-  if (!schedule) {
-    area.innerHTML = `
-      <div class="weekend-msg">
-        <div class="icon">🌸</div>
-        <h3>Rest day</h3>
-        <p>No structured schedule today.<br>Enjoy your time!</p>
-      </div>`;
-    updateProgress({}, 0);
-    return;
-  }
-
-  area.innerHTML = '<div class="section-label">Today\'s Blocks</div><div class="schedule" id="schedList"></div>';
-
-  const list = document.getElementById('schedList');
-  schedule.forEach(block => {
-    const isDone = !!done[block.id];
-    const div = document.createElement('div');
-    div.className = `block ${block.color}${isDone ? ' done' : ''}`;
-    div.innerHTML = `
-      <div class="block-check">
-        <span>✓</span>
-      </div>
-      <div class="block-info">
-        <div class="block-time">${block.time}</div>
-        <div class="block-title">${block.title}</div>
-        ${block.sub ? `<div class="block-sub">${block.sub}</div>` : ''}
-        ${block.id === 'deep' ? `<button class="pomo-trigger" onclick="event.stopPropagation(); openPomodoro()">🍅 Start Pomodoro</button>` : ''}
-      </div>
-      <div class="block-emoji">${block.emoji}</div>
-    `;
-    div.addEventListener('click', () => toggleBlock(block.id, div));
-    list.appendChild(div);
-  });
-
-  updateProgress(done, schedule.length);
-}
-
-function updateProgress(done, total) {
-  const count = Object.values(done).filter(Boolean).length;
-  const pct = total > 0 ? Math.round((count / total) * 100) : 0;
-  document.getElementById('progressText').textContent = `${count} / ${total} done`;
-  const fill = document.getElementById('progressFill');
-  fill.style.cssText = `width: ${pct}%; height: 100%; background: #C4622D; border-radius: 4px; min-width: ${pct > 0 ? '8px' : '0px'}; transition: width 0.5s ease;`;
-}
-
-function toggleBlock(id, el) {
-  const ds = dateStr(selectedDate);
-  const { done, note } = loadForDate(ds);
-  const wasNotDone = !done[id];
-  done[id] = !done[id];
-  saveForDate(ds, done, note);
-  if (wasNotDone && el) launchSunflowers(el);
-  renderAll();
-}
-
-function renderAll() {
-  renderHeader();
-  renderDayStrip();
-  renderSchedule();
-}
-
-// ── Note saving ────────────────────────────────────────────────────────────
-document.getElementById('noteInput').addEventListener('input', function() {
-  const ds = dateStr(selectedDate);
-  const { done } = loadForDate(ds);
-  saveForDate(ds, done, this.value);
-});
-
-// ── External links ─────────────────────────────────────────────────────────
-function openCalendar(e) {
-  e.preventDefault();
-  // Try iOS calendar deep link, fall back to web
-  window.location.href = 'calshow://';
-  setTimeout(() => {
-    // If still here after 1s, open Apple Calendar web
-    window.open('https://www.icloud.com/calendar/', '_blank');
-  }, 800);
-}
-
-function openReminders(e) {
-  e.preventDefault();
-  window.location.href = 'x-apple-reminderkit://';
-  setTimeout(() => {
-    window.open('https://www.icloud.com/reminders/', '_blank');
-  }, 800);
-}
-
-// ── Motivational quotes ────────────────────────────────────────────────────
-const quotes = [
-  { q: "Every page you write today is a page closer to done.", s: "Your 5 years of work matter. Keep going, Aggie. 🤓" },
-  { q: "A PhD is not a sprint — it's a long, brave act of curiosity.", s: "You're doing something most people never dare to start." },
-  { q: "The mornings you protect are the ones that change everything.", s: "Deep work is a gift you give your future self." },
-  { q: "You are building something no one else could build.", s: "Your research is uniquely yours. That's extraordinary." },
-  { q: "Hard days are part of the work, not a sign it's wrong.", s: "Rest when you need to. Then return. That's the whole secret." },
-  { q: "Even slow progress is still progress.", s: "A paragraph, an idea, a rereading — all of it counts." },
-  { q: "You show up for your daughter and for your thesis. That's not small.", s: "Doing both takes real courage and real love." },
-  { q: "Wednesdays are for the people you love most.", s: "Rest, recharge, and enjoy every moment with your daughter. 🌸" },
-  { q: "American civilization chose you as much as you chose it.", s: "Your perspective on this field is rare and valuable." },
-  { q: "The dissertation exists because you keep showing up.", s: "One word, one paragraph, one chapter at a time." },
-  { q: "You are not behind. You are exactly where you need to be.", s: "Trust the process, Aggie. It's working." },
-  { q: "Every scholar you admire once sat where you sit now.", s: "They finished. So will you." },
-  { q: "Protecting your mornings is an act of self-respect.", s: "The world can wait until 9am." },
-  { q: "Your daughter sees a mom who never gives up.", s: "That's one of the greatest gifts you can give her." },
-  { q: "A walk, a coffee, a deep breath — then back to the work.", s: "Small rituals make big things possible." },
-  { q: "The archives, the footnotes, the drafts — all of it matters.", s: "You are doing real, meaningful scholarly work." },
-  { q: "Fatigue is not failure. Rest is part of the research.", s: "Come back tomorrow. The words will still be there." },
-  { q: "You chose a hard path because easy paths weren't enough for you.", s: "That says everything about who you are." },
-  { q: "Your committee believes in this work. So should you.", s: "You earned your place at that table." },
-  { q: "The defense is coming. And you will be ready.", s: "Not because it will be perfect — because you will be prepared." },
-  { q: "Writing a PhD as a mom is twice the courage.", s: "Never forget how remarkable that is." },
-  { q: "Some days the best research is just showing up.", s: "Open the document. Start anywhere. Keep going." },
-  { q: "Your curiosity brought you here. Let it carry you through.", s: "The questions you ask matter deeply." },
-];
-
-// Pick a stable but varied quote per day (not day-of-week based)
-function getDailyQuote() {
-  const now = new Date();
-  const dayOfYear = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000);
-  return quotes[dayOfYear % quotes.length];
-}
-
-function renderMotiv() {
-  const q = getDailyQuote();
-  document.getElementById('motivQuote').textContent = `"${q.q}"`;
-  document.getElementById('motivSub').textContent = q.s;
-}
-
-// ── Sunflower animation ────────────────────────────────────────────────────
-function launchSunflowers(originEl) {
-  const container = document.getElementById('sunflowerContainer');
-  const rect = originEl.getBoundingClientRect();
-  const count = 6;
-
-  for (let i = 0; i < count; i++) {
-    const el = document.createElement('div');
-    el.className = 'sunflower';
-    el.textContent = '🌻';
-    const x = rect.left + rect.width / 2 + (Math.random() - 0.5) * 120;
-    const y = rect.top + rect.height / 2;
-    el.style.left = x + 'px';
-    el.style.top = y + 'px';
-    el.style.animationDelay = (i * 0.12) + 's';
-    el.style.fontSize = (22 + Math.random() * 16) + 'px';
-    container.appendChild(el);
-    setTimeout(() => el.remove(), 2200);
-  }
-}
-
-
-<!-- ── Pomodoro Overlay ──────────────────────────────────────────────────── -->
 <div class="pomo-overlay" id="pomoOverlay">
 
   <div class="pomo-header">
     <button class="pomo-back" onclick="closePomodoro()">← Back</button>
-    <div class="pomo-title">Aggie's <em>Focus</em></div>
+    <div class="pomo-header-title">Aggie's <em>Focus</em></div>
   </div>
 
-  <div class="pomo-mode-tabs">
-    <button class="pomo-tab active" id="pomoTabFocus" onclick="pomoSetMode('focus')">Focus</button>
-    <button class="pomo-tab" id="pomoTabShort" onclick="pomoSetMode('short')">Short Break</button>
-    <button class="pomo-tab" id="pomoTabLong" onclick="pomoSetMode('long')">Long Break</button>
+  <div class="pomo-tabs">
+    <button class="pomo-tab active" id="ptFocus" onclick="pomoSetMode('focus')">Focus</button>
+    <button class="pomo-tab" id="ptShort" onclick="pomoSetMode('short')">Short Break</button>
+    <button class="pomo-tab" id="ptLong" onclick="pomoSetMode('long')">Long Break</button>
   </div>
 
-  <div class="pomo-timer-wrap">
-    <div class="pomo-ring-wrap">
+  <div class="pomo-ring-wrap">
+    <div class="pomo-svg-wrap">
       <svg class="pomo-svg" viewBox="0 0 220 220">
         <circle class="pomo-track" cx="110" cy="110" r="100"/>
-        <circle class="pomo-progress" id="pomoProgress" cx="110" cy="110" r="100"/>
+        <circle class="pomo-arc" id="pomoArc" cx="110" cy="110" r="100"/>
       </svg>
       <div class="pomo-center">
-        <div class="pomo-time" id="pomoDisplay">25:00</div>
-        <div class="pomo-label" id="pomoLabel">Deep Focus 🤓</div>
+        <div class="pomo-time" id="pomoTime">25:00</div>
+        <div class="pomo-mode-label" id="pomoModeLabel">Deep Focus 🤓</div>
       </div>
     </div>
     <div class="pomo-dots" id="pomoDots"></div>
   </div>
 
-  <div class="pomo-controls">
-    <button class="pomo-ctrl sec" onclick="pomoReset()">↺</button>
-    <button class="pomo-ctrl pri" id="pomoPlayBtn" onclick="pomoToggle()">▶</button>
-    <button class="pomo-ctrl sec" onclick="pomoSkip()">⏭</button>
+  <div class="pomo-ctrls">
+    <button class="pomo-btn sec" onclick="pomoReset()">↺</button>
+    <button class="pomo-btn pri" id="pomoPlay" onclick="pomoToggle()">▶</button>
+    <button class="pomo-btn sec" onclick="pomoSkip()">⏭</button>
   </div>
 
-  <div class="pomo-task">
+  <div class="pomo-task-box">
     <div class="pomo-task-label">📖 Working on</div>
-    <input class="pomo-task-input" type="text" placeholder="What are you focusing on right now?" id="pomoTaskInput">
+    <input class="pomo-task-input" type="text" placeholder="What are you focusing on right now?">
   </div>
 
   <div class="pomo-stats">
-    <div class="pomo-stat">
-      <div class="pomo-stat-num" id="pomoStatSessions">0</div>
-      <div class="pomo-stat-label">Sessions</div>
-    </div>
-    <div class="pomo-stat">
-      <div class="pomo-stat-num" id="pomoStatMinutes">0</div>
-      <div class="pomo-stat-label">Min focused</div>
-    </div>
-    <div class="pomo-stat">
-      <div class="pomo-stat-num" id="pomoStatStreak">—</div>
-      <div class="pomo-stat-label">Cycles done</div>
-    </div>
+    <div class="pomo-stat"><div class="pomo-stat-num" id="pSessions">0</div><div class="pomo-stat-lbl">Sessions</div></div>
+    <div class="pomo-stat"><div class="pomo-stat-num" id="pMinutes">0</div><div class="pomo-stat-lbl">Min focused</div></div>
+    <div class="pomo-stat"><div class="pomo-stat-num" id="pCycles">—</div><div class="pomo-stat-lbl">Cycles done</div></div>
   </div>
 
-  <div class="pomo-settings">
-    <div class="pomo-settings-label">⚙️ Timer settings</div>
-    <div class="pomo-setting-row">
-      <div class="pomo-setting-name">Focus</div>
-      <div class="pomo-setting-ctrls">
-        <button class="pomo-setting-btn" onclick="pomoAdjust('focus',-5)">−</button>
-        <div class="pomo-setting-val" id="pomoSetFocus">25</div>
-        <button class="pomo-setting-btn" onclick="pomoAdjust('focus',5)">+</button>
+  <div class="pomo-settings-box">
+    <div class="pomo-settings-lbl">⚙️ Timer settings</div>
+    <div class="pomo-set-row">
+      <div class="pomo-set-name">Focus</div>
+      <div class="pomo-set-ctrls">
+        <button class="pomo-set-btn" onclick="pomoAdjust('focus',-5)">−</button>
+        <div class="pomo-set-val" id="pvFocus">25</div>
+        <button class="pomo-set-btn" onclick="pomoAdjust('focus',5)">+</button>
       </div>
     </div>
-    <div class="pomo-setting-row">
-      <div class="pomo-setting-name">Short break</div>
-      <div class="pomo-setting-ctrls">
-        <button class="pomo-setting-btn" onclick="pomoAdjust('short',-1)">−</button>
-        <div class="pomo-setting-val" id="pomoSetShort">5</div>
-        <button class="pomo-setting-btn" onclick="pomoAdjust('short',1)">+</button>
+    <div class="pomo-set-row">
+      <div class="pomo-set-name">Short break</div>
+      <div class="pomo-set-ctrls">
+        <button class="pomo-set-btn" onclick="pomoAdjust('short',-1)">−</button>
+        <div class="pomo-set-val" id="pvShort">5</div>
+        <button class="pomo-set-btn" onclick="pomoAdjust('short',1)">+</button>
       </div>
     </div>
-    <div class="pomo-setting-row">
-      <div class="pomo-setting-name">Long break</div>
-      <div class="pomo-setting-ctrls">
-        <button class="pomo-setting-btn" onclick="pomoAdjust('long',-5)">−</button>
-        <div class="pomo-setting-val" id="pomoSetLong">15</div>
-        <button class="pomo-setting-btn" onclick="pomoAdjust('long',5)">+</button>
+    <div class="pomo-set-row">
+      <div class="pomo-set-name">Long break</div>
+      <div class="pomo-set-ctrls">
+        <button class="pomo-set-btn" onclick="pomoAdjust('long',-5)">−</button>
+        <div class="pomo-set-val" id="pvLong">15</div>
+        <button class="pomo-set-btn" onclick="pomoAdjust('long',5)">+</button>
       </div>
     </div>
   </div>
 
-</div>
+</div><!-- end pomoOverlay -->
 
-<div class="pomo-banner" id="pomoBanner">
-  <button class="pomo-banner-close" onclick="pomoCloseBanner()">✕</button>
-  <div class="pomo-banner-title" id="pomoBannerTitle">🌻 Session complete!</div>
-  <div class="pomo-banner-sub" id="pomoBannerSub">Take a well-deserved break, Aggie.</div>
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+  <button class="toast-close" onclick="closeToast()">✕</button>
+  <div class="toast-title" id="toastTitle"></div>
+  <div class="toast-sub" id="toastSub"></div>
 </div>
 
 <script>
-// ── Pomodoro State ─────────────────────────────────────────────────────────
-const pomoSettings = { focus: 25, short: 5, long: 15 };
-let pomoMode = 'focus';
-let pomoTimeLeft = 25 * 60;
-let pomoTotalTime = 25 * 60;
-let pomoRunning = false;
-let pomoInterval = null;
-let pomoSessions = 0;
-let pomoMinutes = 0;
-let pomoCycleCount = 0;
-const POMO_CIRC = 2 * Math.PI * 100; // 628
+// ─────────────────────────────────────────────
+// ICON GENERATION
+// ─────────────────────────────────────────────
+(function(){
+  var canvas=document.createElement('canvas');
+  canvas.width=512;canvas.height=512;
+  var ctx=canvas.getContext('2d');
+  var bg=ctx.createLinearGradient(0,0,512,512);
+  bg.addColorStop(0,'#E8D5D0');bg.addColorStop(1,'#C9B8C4');
+  ctx.fillStyle=bg;
+  ctx.beginPath();ctx.moveTo(100,0);ctx.lineTo(412,0);ctx.quadraticCurveTo(512,0,512,100);
+  ctx.lineTo(512,412);ctx.quadraticCurveTo(512,512,412,512);ctx.lineTo(100,512);
+  ctx.quadraticCurveTo(0,512,0,412);ctx.lineTo(0,100);ctx.quadraticCurveTo(0,0,100,0);
+  ctx.closePath();ctx.fill();
+  ctx.fillStyle='#5C3D4A';ctx.font='bold 260px Georgia,serif';
+  ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('A',258,248);
+  var dataURL=canvas.toDataURL('image/png');
+  var lnk=document.createElement('link');lnk.rel='apple-touch-icon';lnk.href=dataURL;
+  document.head.appendChild(lnk);
+})();
 
-function openPomodoro() {
-  document.getElementById('pomoOverlay').classList.add('open');
-  pomoUpdateDisplay();
-  pomoUpdateRing();
-  pomoUpdateDots();
+// ─────────────────────────────────────────────
+// MAIN APP STATE
+// ─────────────────────────────────────────────
+var today=new Date();
+var selectedDate=new Date(today);
+var DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function dateStr(d){
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
 }
 
-function closePomodoro() {
+function loadDay(ds){
+  try{
+    return{
+      done:JSON.parse(localStorage.getItem('ag_done_'+ds)||'{}'),
+      note:localStorage.getItem('ag_note_'+ds)||''
+    };
+  }catch(e){return{done:{},note:''};}
+}
+
+function saveDay(ds,done,note){
+  localStorage.setItem('ag_done_'+ds,JSON.stringify(done));
+  localStorage.setItem('ag_note_'+ds,note);
+}
+
+// ─────────────────────────────────────────────
+// SCHEDULE DEFINITION
+// ─────────────────────────────────────────────
+function getSchedule(dow){
+  if(dow===0||dow===6) return null; // weekend
+
+  // Wednesday
+  if(dow===3){
+    return[
+      {id:'fam1',time:'Morning – 14:00',title:'Time with Your Daughter',sub:'Precious Wednesday morning together 🌸',emoji:'👧',color:'b-family'},
+      {id:'light',time:'15:00 – 16:00',title:'Light PhD Work',sub:'If energy allows — no pressure',emoji:'🤓',color:'b-light'},
+      {id:'fam2',time:'16:00 – 21:00',title:'Back to Your Daughter',sub:'Evening together 🌿',emoji:'👧',color:'b-family'}
+    ];
+  }
+
+  var workout=(dow===2||dow===4); // Tue, Thu
+  var blocks=[
+    {id:'walk',time:'8:30 – 9:00',title:'Morning Walk',sub:'30 min outside',emoji:'🚶',color:'b-walk'},
+    {id:'deep',time:'9:00 – 12:00',title:'Deep Work',sub:'PhD — protected focus time',emoji:'🤓',color:'b-deep'},
+    {id:'lunch',time:'12:00 – 13:00',title:'Lunch Break',sub:workout?'Includes 30 min workout today 💪':'🦵 Gentle reminder: stretch your legs today?',emoji:'🍽️',color:'b-lunch'}
+  ];
+  if(workout){
+    blocks.push({id:'workout',time:'12:00 – 12:30',title:'Workout',sub:'During lunch — 30 min',emoji:'💪',color:'b-workout'});
+  }
+  blocks.push(
+    {id:'light',time:'13:30 – 15:00',title:'Light PhD Work',sub:'Admin, emails, reading',emoji:'📚',color:'b-light'},
+    {id:'family',time:'16:00 – 21:00',title:'Quiet Time',sub:'With your daughter 🌿',emoji:'👧',color:'b-family'}
+  );
+  return blocks;
+}
+
+// ─────────────────────────────────────────────
+// RENDER
+// ─────────────────────────────────────────────
+function renderHeader(){
+  var d=selectedDate;
+  document.getElementById('headerDate').textContent=DAYS[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate();
+}
+
+function renderDayStrip(){
+  var strip=document.getElementById('dayStrip');
+  strip.innerHTML='';
+  for(var i=-3;i<=3;i++){
+    var d=new Date(today);
+    d.setDate(today.getDate()+i);
+    var ds=dateStr(d);
+    var info=loadDay(ds);
+    var hasDone=Object.values(info.done).some(Boolean);
+    var isActive=dateStr(d)===dateStr(selectedDate);
+    var pill=document.createElement('div');
+    pill.className='day-pill'+(isActive?' active':'')+(hasDone?' has-done':'');
+    pill.innerHTML='<div class="day-name">'+DAYS[d.getDay()]+'</div><div class="day-num">'+d.getDate()+'</div><div class="dot"></div>';
+    (function(date){
+      pill.addEventListener('click',function(){selectedDate=date;renderAll();});
+    })(new Date(d));
+    strip.appendChild(pill);
+  }
+}
+
+function renderSchedule(){
+  var list=document.getElementById('schedList');
+  list.innerHTML='';
+  var dow=selectedDate.getDay();
+  var schedule=getSchedule(dow);
+  var ds=dateStr(selectedDate);
+  var info=loadDay(ds);
+  document.getElementById('noteInput').value=info.note;
+
+  if(!schedule){
+    list.innerHTML='<div class="weekend-msg"><div class="icon">🌸</div><h3>Rest day</h3><p>No structured schedule today.<br>Enjoy your time!</p></div>';
+    updateProgress({},0);
+    return;
+  }
+
+  schedule.forEach(function(block){
+    var isDone=!!info.done[block.id];
+    var div=document.createElement('div');
+    div.className='block '+block.color+(isDone?' done':'');
+    var pomoBtn=block.id==='deep'?'<button class="pomo-trigger" onclick="event.stopPropagation();openPomodoro()">🍅 Start Pomodoro</button>':'';
+    div.innerHTML=
+      '<div class="block-check"><span class="block-check-inner">✓</span></div>'+
+      '<div class="block-info">'+
+        '<div class="block-time">'+block.time+'</div>'+
+        '<div class="block-title">'+block.title+'</div>'+
+        (block.sub?'<div class="block-sub">'+block.sub+'</div>':'')+
+        pomoBtn+
+      '</div>'+
+      '<div class="block-emoji">'+block.emoji+'</div>';
+    (function(b,el){
+      el.addEventListener('click',function(){toggleBlock(b.id,el);});
+    })(block,div);
+    list.appendChild(div);
+  });
+
+  updateProgress(info.done,schedule.length);
+}
+
+function updateProgress(done,total){
+  var count=Object.values(done).filter(Boolean).length;
+  var pct=total>0?Math.round(count/total*100):0;
+  document.getElementById('progressText').textContent=count+' / '+total+' done';
+  document.getElementById('progressFill').style.width=pct+'%';
+}
+
+function toggleBlock(id,el){
+  var ds=dateStr(selectedDate);
+  var info=loadDay(ds);
+  var wasOff=!info.done[id];
+  info.done[id]=wasOff;
+  saveDay(ds,info.done,info.note);
+  if(wasOff&&el) launchSunflowers(el);
+  renderAll();
+}
+
+function renderAll(){
+  renderHeader();
+  renderDayStrip();
+  renderSchedule();
+}
+
+// ─────────────────────────────────────────────
+// NOTE
+// ─────────────────────────────────────────────
+document.getElementById('noteInput').addEventListener('input',function(){
+  var ds=dateStr(selectedDate);
+  var info=loadDay(ds);
+  saveDay(ds,info.done,this.value);
+});
+
+// ─────────────────────────────────────────────
+// EXTERNAL LINKS
+// ─────────────────────────────────────────────
+function openCalendar(){
+  window.location.href='calshow://';
+  setTimeout(function(){window.open('https://www.icloud.com/calendar/','_blank');},800);
+}
+function openReminders(){
+  window.location.href='x-apple-reminderkit://';
+  setTimeout(function(){window.open('https://www.icloud.com/reminders/','_blank');},800);
+}
+
+// ─────────────────────────────────────────────
+// MOTIVATIONAL QUOTES
+// ─────────────────────────────────────────────
+var quotes=[
+  {q:"Every page you write today is a page closer to done.",s:"Your years of work matter. Keep going, Aggie. 🤓"},
+  {q:"A PhD is not a sprint — it's a long, brave act of curiosity.",s:"You're doing something most people never dare to start."},
+  {q:"The mornings you protect are the ones that change everything.",s:"Deep work is a gift you give your future self."},
+  {q:"You are building something no one else could build.",s:"Your research is uniquely yours. That's extraordinary."},
+  {q:"Hard days are part of the work, not a sign it's wrong.",s:"Rest when you need to. Then return. That's the whole secret."},
+  {q:"Even slow progress is still progress.",s:"A paragraph, an idea, a rereading — all of it counts."},
+  {q:"You show up for your daughter and for your thesis.",s:"Doing both takes real courage and real love."},
+  {q:"Wednesdays are for the people you love most.",s:"Rest, recharge, and enjoy every moment with your daughter. 🌸"},
+  {q:"American civilization chose you as much as you chose it.",s:"Your perspective on this field is rare and valuable."},
+  {q:"The dissertation exists because you keep showing up.",s:"One word, one paragraph, one chapter at a time."},
+  {q:"You are not behind. You are exactly where you need to be.",s:"Trust the process, Aggie. It's working."},
+  {q:"Every scholar you admire once sat where you sit now.",s:"They finished. So will you."},
+  {q:"Protecting your mornings is an act of self-respect.",s:"The world can wait until 9am."},
+  {q:"Your daughter sees a mom who never gives up.",s:"That's one of the greatest gifts you can give her."},
+  {q:"A walk, a coffee, a deep breath — then back to the work.",s:"Small rituals make big things possible."},
+  {q:"Fatigue is not failure. Rest is part of the research.",s:"Come back tomorrow. The words will still be there."},
+  {q:"You chose a hard path because easy paths weren't enough.",s:"That says everything about who you are."},
+  {q:"The defense is coming. And you will be ready.",s:"Not because it's perfect — because you will be prepared."},
+  {q:"Writing a PhD as a mom is twice the courage.",s:"Never forget how remarkable that is."},
+  {q:"Some days the best research is just showing up.",s:"Open the document. Start anywhere. Keep going."},
+  {q:"Your curiosity brought you here. Let it carry you through.",s:"The questions you ask matter deeply."},
+  {q:"Every footnote, every draft, every late night counts.",s:"You are building something real and lasting."},
+  {q:"The finish line exists. You are moving toward it.",s:"Keep your eyes on the defense day, Aggie. 🎓"}
+];
+
+function renderMotiv(){
+  var now=new Date();
+  var dayOfYear=Math.floor((now-new Date(now.getFullYear(),0,0))/86400000);
+  var q=quotes[dayOfYear%quotes.length];
+  document.getElementById('motivQuote').textContent='"'+q.q+'"';
+  document.getElementById('motivSub').textContent=q.s;
+}
+
+// ─────────────────────────────────────────────
+// SUNFLOWERS
+// ─────────────────────────────────────────────
+function launchSunflowers(originEl){
+  var container=document.getElementById('sunflowerContainer');
+  var rect=originEl.getBoundingClientRect();
+  for(var i=0;i<6;i++){
+    (function(i){
+      var el=document.createElement('div');
+      el.className='sunflower';
+      el.textContent='🌻';
+      el.style.left=(rect.left+rect.width/2+(Math.random()-.5)*120)+'px';
+      el.style.top=(rect.top+rect.height/2)+'px';
+      el.style.animationDelay=(i*.12)+'s';
+      el.style.fontSize=(22+Math.random()*16)+'px';
+      container.appendChild(el);
+      setTimeout(function(){el.remove();},2200);
+    })(i);
+  }
+}
+
+// ─────────────────────────────────────────────
+// TOAST
+// ─────────────────────────────────────────────
+var toastTimer=null;
+function showToast(title,sub){
+  document.getElementById('toastTitle').textContent=title;
+  document.getElementById('toastSub').textContent=sub;
+  document.getElementById('toast').classList.add('show');
+  if(toastTimer) clearTimeout(toastTimer);
+  toastTimer=setTimeout(closeToast,5000);
+}
+function closeToast(){
+  document.getElementById('toast').classList.remove('show');
+}
+
+// ─────────────────────────────────────────────
+// POMODORO
+// ─────────────────────────────────────────────
+var pSet={focus:25,short:5,long:15};
+var pMode='focus';
+var pLeft=25*60;
+var pTotal=25*60;
+var pRunning=false;
+var pInterval=null;
+var pSessions=0;
+var pMinutes=0;
+var PCIRC=628;
+
+function openPomodoro(){
+  document.getElementById('pomoOverlay').classList.add('open');
+  pomoRefresh();
+}
+function closePomodoro(){
   document.getElementById('pomoOverlay').classList.remove('open');
 }
 
-function pomoSetMode(mode) {
-  pomoMode = mode;
-  clearInterval(pomoInterval);
-  pomoRunning = false;
-  document.getElementById('pomoPlayBtn').textContent = '▶';
-  document.getElementById('pomoPlayBtn').classList.remove('running');
-  const mins = mode === 'focus' ? pomoSettings.focus : mode === 'short' ? pomoSettings.short : pomoSettings.long;
-  pomoTimeLeft = mins * 60;
-  pomoTotalTime = mins * 60;
-  const labels = { focus: 'Deep Focus 🤓', short: 'Short Break 🌿', long: 'Long Break ☕' };
-  document.getElementById('pomoLabel').textContent = labels[mode];
-  document.getElementById('pomoProgress').classList.toggle('break-mode', mode !== 'focus');
-  ['pomoTabFocus','pomoTabShort','pomoTabLong'].forEach(id => document.getElementById(id).classList.remove('active'));
-  document.getElementById(mode === 'focus' ? 'pomoTabFocus' : mode === 'short' ? 'pomoTabShort' : 'pomoTabLong').classList.add('active');
-  pomoUpdateDisplay();
-  pomoUpdateRing();
+function pomoSetMode(mode){
+  pMode=mode;
+  clearInterval(pInterval);pRunning=false;
+  var btn=document.getElementById('pomoPlay');
+  btn.textContent='▶';btn.classList.remove('on');
+  var mins=mode==='focus'?pSet.focus:mode==='short'?pSet.short:pSet.long;
+  pLeft=mins*60;pTotal=mins*60;
+  var labels={focus:'Deep Focus 🤓',short:'Short Break 🌿',long:'Long Break ☕'};
+  document.getElementById('pomoModeLabel').textContent=labels[mode];
+  document.getElementById('pomoArc').classList.toggle('brk',mode!=='focus');
+  ['ptFocus','ptShort','ptLong'].forEach(function(id){document.getElementById(id).classList.remove('active');});
+  document.getElementById(mode==='focus'?'ptFocus':mode==='short'?'ptShort':'ptLong').classList.add('active');
+  pomoRefresh();
 }
 
-function pomoToggle() {
-  if (pomoRunning) {
-    clearInterval(pomoInterval);
-    pomoRunning = false;
-    document.getElementById('pomoPlayBtn').textContent = '▶';
-    document.getElementById('pomoPlayBtn').classList.remove('running');
+function pomoToggle(){
+  if(pRunning){
+    clearInterval(pInterval);pRunning=false;
+    var btn=document.getElementById('pomoPlay');btn.textContent='▶';btn.classList.remove('on');
   } else {
-    pomoRunning = true;
-    document.getElementById('pomoPlayBtn').textContent = '⏸';
-    document.getElementById('pomoPlayBtn').classList.add('running');
-    pomoInterval = setInterval(pomoTick, 1000);
+    pRunning=true;
+    var btn=document.getElementById('pomoPlay');btn.textContent='⏸';btn.classList.add('on');
+    pInterval=setInterval(pomoTick,1000);
   }
 }
 
-function pomoTick() {
-  pomoTimeLeft--;
-  pomoUpdateDisplay();
-  pomoUpdateRing();
-  if (pomoTimeLeft <= 0) {
-    clearInterval(pomoInterval);
-    pomoRunning = false;
-    pomoOnComplete();
-  }
+function pomoTick(){
+  pLeft--;
+  pomoRefresh();
+  if(pLeft<=0){clearInterval(pInterval);pRunning=false;pomoComplete();}
 }
 
-function pomoOnComplete() {
-  document.getElementById('pomoPlayBtn').textContent = '▶';
-  document.getElementById('pomoPlayBtn').classList.remove('running');
-  if (pomoMode === 'focus') {
-    pomoSessions++;
-    pomoCycleCount++;
-    pomoMinutes += pomoSettings.focus;
+function pomoComplete(){
+  var btn=document.getElementById('pomoPlay');btn.textContent='▶';btn.classList.remove('on');
+  if(pMode==='focus'){
+    pSessions++;pMinutes+=pSet.focus;
     pomoUpdateStats();
-    launchSunflowers(document.getElementById('pomoPlayBtn'));
-    pomoShowBanner('🌻 Focus session done!', 'Wonderful work, Aggie. Take a break!');
-    setTimeout(() => {
-      if (pomoSessions % 4 === 0) pomoSetMode('long');
-      else pomoSetMode('short');
+    launchSunflowers(document.getElementById('pomoPlay'));
+    showToast('🌻 Focus session done!','Wonderful work, Aggie. Take a break!');
+    setTimeout(function(){
+      if(pSessions%4===0) pomoSetMode('long'); else pomoSetMode('short');
       pomoUpdateDots();
-    }, 2000);
+    },2000);
   } else {
-    pomoShowBanner('✨ Break over!', 'Ready for another deep work session? 🤓');
-    setTimeout(() => pomoSetMode('focus'), 2000);
+    showToast('✨ Break over!','Ready for another deep work session? 🤓');
+    setTimeout(function(){pomoSetMode('focus');},2000);
   }
   pomoUpdateDots();
 }
 
-function pomoReset() {
-  clearInterval(pomoInterval);
-  pomoRunning = false;
-  document.getElementById('pomoPlayBtn').textContent = '▶';
-  document.getElementById('pomoPlayBtn').classList.remove('running');
-  const mins = pomoMode === 'focus' ? pomoSettings.focus : pomoMode === 'short' ? pomoSettings.short : pomoSettings.long;
-  pomoTimeLeft = mins * 60;
-  pomoTotalTime = mins * 60;
-  pomoUpdateDisplay();
-  pomoUpdateRing();
+function pomoReset(){
+  clearInterval(pInterval);pRunning=false;
+  var btn=document.getElementById('pomoPlay');btn.textContent='▶';btn.classList.remove('on');
+  var mins=pMode==='focus'?pSet.focus:pMode==='short'?pSet.short:pSet.long;
+  pLeft=mins*60;pTotal=mins*60;
+  pomoRefresh();
 }
 
-function pomoSkip() {
-  clearInterval(pomoInterval);
-  pomoRunning = false;
-  pomoTimeLeft = 0;
-  pomoUpdateDisplay();
-  pomoUpdateRing();
-  pomoOnComplete();
+function pomoSkip(){
+  clearInterval(pInterval);pRunning=false;
+  pLeft=0;pomoRefresh();pomoComplete();
 }
 
-function pomoAdjust(key, delta) {
-  pomoSettings[key] = Math.max(1, pomoSettings[key] + delta);
-  document.getElementById('pomoSet' + key.charAt(0).toUpperCase() + key.slice(1)).textContent = pomoSettings[key];
-  if (pomoMode === key) pomoSetMode(key);
+function pomoAdjust(key,delta){
+  pSet[key]=Math.max(1,pSet[key]+delta);
+  document.getElementById('pv'+key.charAt(0).toUpperCase()+key.slice(1)).textContent=pSet[key];
+  if(pMode===key) pomoSetMode(key);
 }
 
-function pomoUpdateDisplay() {
-  const m = Math.floor(pomoTimeLeft / 60).toString().padStart(2,'0');
-  const s = (pomoTimeLeft % 60).toString().padStart(2,'0');
-  document.getElementById('pomoDisplay').textContent = `${m}:${s}`;
+function pomoRefresh(){
+  var m=Math.floor(pLeft/60).toString().padStart(2,'0');
+  var s=(pLeft%60).toString().padStart(2,'0');
+  document.getElementById('pomoTime').textContent=m+':'+s;
+  var pct=pLeft/pTotal;
+  document.getElementById('pomoArc').style.strokeDashoffset=PCIRC*(1-pct);
+  pomoUpdateDots();
 }
 
-function pomoUpdateRing() {
-  const pct = pomoTimeLeft / pomoTotalTime;
-  document.getElementById('pomoProgress').style.strokeDashoffset = POMO_CIRC * (1 - pct);
-}
-
-function pomoUpdateDots() {
-  const dots = document.getElementById('pomoDots');
-  dots.innerHTML = '';
-  const pos = pomoSessions % 4;
-  for (let i = 0; i < 4; i++) {
-    const d = document.createElement('div');
-    d.className = 'pomo-dot' + (i < pos ? ' done' : i === pos && pomoMode === 'focus' ? ' current' : '');
+function pomoUpdateDots(){
+  var dots=document.getElementById('pomoDots');
+  dots.innerHTML='';
+  var pos=pSessions%4;
+  for(var i=0;i<4;i++){
+    var d=document.createElement('div');
+    d.className='pomo-dot'+(i<pos?' done':i===pos&&pMode==='focus'?' cur':'');
     dots.appendChild(d);
   }
 }
 
-function pomoUpdateStats() {
-  document.getElementById('pomoStatSessions').textContent = pomoSessions;
-  document.getElementById('pomoStatMinutes').textContent = pomoMinutes;
-  document.getElementById('pomoStatStreak').textContent = Math.floor(pomoSessions / 4) || '—';
+function pomoUpdateStats(){
+  document.getElementById('pSessions').textContent=pSessions;
+  document.getElementById('pMinutes').textContent=pMinutes;
+  document.getElementById('pCycles').textContent=Math.floor(pSessions/4)||'—';
 }
 
-function pomoShowBanner(title, sub) {
-  document.getElementById('pomoBannerTitle').textContent = title;
-  document.getElementById('pomoBannerSub').textContent = sub;
-  document.getElementById('pomoBanner').classList.add('show');
-  setTimeout(pomoCloseBanner, 5000);
-}
-
-function pomoCloseBanner() {
-  document.getElementById('pomoBanner').classList.remove('show');
-}
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+renderMotiv();
+renderAll();
 </script>
 
 </body>
