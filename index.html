@@ -648,10 +648,39 @@ function dateStr(d) {
 }
 
 // ── Schedule definition ────────────────────────────────────────────────────
-// days: 1-5 = weekday, null = any weekday, 'TuTh' = tue/thu workout
 function getSchedule(dayOfWeek) {
   const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
   if (isWeekend) return null;
+
+  // Wednesday special schedule
+  if (dayOfWeek === 3) {
+    return [
+      {
+        id: 'family-morning',
+        time: 'Morning – 14:00',
+        title: 'Time with Your Daughter',
+        sub: 'Precious Wednesday morning together 🌸',
+        emoji: '👧',
+        color: 'b-family'
+      },
+      {
+        id: 'light',
+        time: '15:00 – 16:00',
+        title: 'Light PhD Work',
+        sub: 'If energy allows — no pressure 📚',
+        emoji: '🤓',
+        color: 'b-light'
+      },
+      {
+        id: 'family-afternoon',
+        time: '16:00 – 21:00',
+        title: 'Back to Your Daughter',
+        sub: 'Evening together 🌿',
+        emoji: '👧',
+        color: 'b-family'
+      }
+    ];
+  }
 
   const isWorkoutDay = dayOfWeek === 2 || dayOfWeek === 4; // Tue, Thu
 
@@ -853,6 +882,7 @@ function openReminders(e) {
 const quotes = [
   { q: "Every page you write today is a page closer to done.", s: "Your 5 years of work matter. Keep going, Aggie. 🤓" },
   { q: "A PhD is not a sprint — it's a long, brave act of curiosity.", s: "You're doing something most people never dare to start." },
+  { q: "Wednesdays are for the people you love most.", s: "Rest, recharge, and enjoy every moment with your daughter. 🌸" },
   { q: "The mornings you protect are the ones that change everything.", s: "Deep work is a gift you give your future self." },
   { q: "You are building something no one else could build.", s: "Your research is uniquely yours. That's extraordinary." },
   { q: "Hard days are part of the work, not a sign it's wrong.", s: "Rest when you need to. Then return. That's the whole secret." },
