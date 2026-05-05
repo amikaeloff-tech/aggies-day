@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -11,78 +12,79 @@ window.addEventListener('DOMContentLoaded', () => {
   canvas.width = 512; canvas.height = 512;
   const ctx = canvas.getContext('2d');
 
-  // Background — soft dusty rose gradient
-  const bg = ctx.createLinearGradient(0, 0, 512, 512);
-  bg.addColorStop(0, '#E8D5D0');
-  bg.addColorStop(1, '#C9B8C4');
-  ctx.fillStyle = bg;
-  roundRect(ctx, 0, 0, 512, 512, 100);
-  ctx.fill();
+// Background — soft dusty rose gradient
+const bg = ctx.createLinearGradient(0, 0, 512, 512);
+bg.addColorStop(0, ‘#E8D5D0’);
+bg.addColorStop(1, ‘#C9B8C4’);
+ctx.fillStyle = bg;
+roundRect(ctx, 0, 0, 512, 512, 100);
+ctx.fill();
 
-  // Subtle inner glow
-  const glow = ctx.createRadialGradient(256, 180, 0, 256, 256, 320);
-  glow.addColorStop(0, 'rgba(255,245,242,0.45)');
-  glow.addColorStop(1, 'rgba(255,245,242,0)');
-  ctx.fillStyle = glow;
-  ctx.fillRect(0, 0, 512, 512);
+// Subtle inner glow
+const glow = ctx.createRadialGradient(256, 180, 0, 256, 256, 320);
+glow.addColorStop(0, ‘rgba(255,245,242,0.45)’);
+glow.addColorStop(1, ‘rgba(255,245,242,0)’);
+ctx.fillStyle = glow;
+ctx.fillRect(0, 0, 512, 512);
 
-  // Letter A — serif elegant
-  ctx.fillStyle = '#5C3D4A';
-  ctx.font = 'bold 260px Georgia, serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('A', 258, 248);
+// Letter A — serif elegant
+ctx.fillStyle = ‘#5C3D4A’;
+ctx.font = ‘bold 260px Georgia, serif’;
+ctx.textAlign = ‘center’;
+ctx.textBaseline = ‘middle’;
+ctx.fillText(‘A’, 258, 248);
 
-  // Small dot decoration
-  ctx.fillStyle = 'rgba(92,61,74,0.35)';
-  ctx.beginPath();
-  ctx.arc(256, 390, 18, 0, Math.PI * 2);
-  ctx.fill();
+// Small dot decoration
+ctx.fillStyle = ‘rgba(92,61,74,0.35)’;
+ctx.beginPath();
+ctx.arc(256, 390, 18, 0, Math.PI * 2);
+ctx.fill();
 
-  function roundRect(ctx, x, y, w, h, r) {
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.lineTo(x + w - r, y);
-    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-    ctx.lineTo(x + w, y + h - r);
-    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-    ctx.lineTo(x + r, y + h);
-    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-    ctx.lineTo(x, y + r);
-    ctx.quadraticCurveTo(x, y, x + r, y);
-    ctx.closePath();
-  }
+function roundRect(ctx, x, y, w, h, r) {
+ctx.beginPath();
+ctx.moveTo(x + r, y);
+ctx.lineTo(x + w - r, y);
+ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+ctx.lineTo(x + w, y + h - r);
+ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+ctx.lineTo(x + r, y + h);
+ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+ctx.lineTo(x, y + r);
+ctx.quadraticCurveTo(x, y, x + r, y);
+ctx.closePath();
+}
 
-  const dataURL = canvas.toDataURL('image/png');
-  const link = document.createElement('link');
-  link.rel = 'apple-touch-icon';
-  link.href = dataURL;
-  document.head.appendChild(link);
+const dataURL = canvas.toDataURL(‘image/png’);
+const link = document.createElement(‘link’);
+link.rel = ‘apple-touch-icon’;
+link.href = dataURL;
+document.head.appendChild(link);
 
-  // Also set favicon
-  const favicon = document.createElement('link');
-  favicon.rel = 'icon';
-  favicon.href = dataURL;
-  document.head.appendChild(favicon);
+// Also set favicon
+const favicon = document.createElement(‘link’);
+favicon.rel = ‘icon’;
+favicon.href = dataURL;
+document.head.appendChild(favicon);
 });
 
 function roundRect(ctx, x, y, w, h, r) {
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.lineTo(x + w - r, y);
-  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-  ctx.lineTo(x + w, y + h - r);
-  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-  ctx.lineTo(x + r, y + h);
-  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-  ctx.lineTo(x, y + r);
-  ctx.quadraticCurveTo(x, y, x + r, y);
-  ctx.closePath();
+ctx.beginPath();
+ctx.moveTo(x + r, y);
+ctx.lineTo(x + w - r, y);
+ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+ctx.lineTo(x + w, y + h - r);
+ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+ctx.lineTo(x + r, y + h);
+ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+ctx.lineTo(x, y + r);
+ctx.quadraticCurveTo(x, y, x + r, y);
+ctx.closePath();
 }
 </script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Aggie's Day">
+
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -102,495 +104,843 @@ function roundRect(ctx, x, y, w, h, r) {
     --lilac-light: #E4E0F0;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
-    padding: 0 0 60px 0;
-  }
-
-  header {
-    background: #1C1A17;
-    color: var(--cream);
-    padding: 28px 24px 22px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  header::before {
-    content: '';
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 180px; height: 180px;
-    border-radius: 50%;
-    background: rgba(196,98,45,0.18);
-  }
-
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 6px;
-  }
-
-  .header-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 28px;
-    line-height: 1.1;
-    letter-spacing: -0.5px;
-  }
-
-  .header-title em {
-    font-style: italic;
-    color: #D4825A;
-  }
-
-  .header-date {
-    font-size: 12px;
-    font-weight: 300;
-    color: rgba(249,245,238,0.55);
-    margin-top: 4px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-
-  .quick-links {
-    display: flex;
-    gap: 8px;
-    margin-top: 18px;
-  }
-
-  .quick-btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 7px 13px;
-    border-radius: 20px;
-    border: 1px solid rgba(249,245,238,0.3);
-    background: rgba(249,245,238,0.12);
-    color: #F9F5EE !important;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    cursor: pointer;
-    text-decoration: none !important;
-    -webkit-text-fill-color: #F9F5EE !important;
-    transition: background 0.2s, border-color 0.2s;
-  }
-
-  .quick-btn * {
-    color: #F9F5EE !important;
-    -webkit-text-fill-color: #F9F5EE !important;
-  }
-
-  .quick-btn:visited,
-  .quick-btn:active,
-  .quick-btn:link {
-    color: #F9F5EE !important;
-    -webkit-text-fill-color: #F9F5EE !important;
-  }
-
-  /* Day strip */
-  .day-strip {
-    display: flex;
-    gap: 8px;
-    padding: 16px 20px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    background: var(--warm);
-    border-bottom: 1px solid rgba(28,26,23,0.08);
-  }
-
-  .day-strip::-webkit-scrollbar { display: none; }
-
-  .day-pill {
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 8px 14px;
-    border-radius: 12px;
-    cursor: pointer;
-    background: transparent;
-    border: 1.5px solid transparent;
-    transition: all 0.2s;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  .day-pill.active {
-    background: var(--ink);
-    color: var(--cream);
-  }
-
-  .day-pill:not(.active):hover {
-    border-color: rgba(28,26,23,0.15);
-    background: rgba(28,26,23,0.04);
-  }
-
-  .day-pill .day-name {
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--muted);
-  }
-
-  .day-pill.active .day-name { 
-    color: rgba(249,245,238,0.7) !important;
-    -webkit-text-fill-color: rgba(249,245,238,0.7) !important;
-  }
-
-  .day-pill.active .day-num {
-    color: #F9F5EE !important;
-    -webkit-text-fill-color: #F9F5EE !important;
-  }
-
-  .day-pill .day-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    line-height: 1.2;
-    margin-top: 1px;
-  }
-
-  .day-pill .dot {
-    width: 4px; height: 4px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-top: 4px;
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  .day-pill.has-done .dot { opacity: 1; }
-
-  /* Progress bar */
-  .progress-bar-wrap {
-    padding: 14px 20px 10px;
-    background: var(--warm);
-  }
-
-  .progress-label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    margin-bottom: 7px;
-  }
-
-  .progress-track {
-    background: rgba(28,26,23,0.15);
-    border-radius: 4px;
-    height: 7px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: #C4622D;
-    border-radius: 4px;
-    transition: width 0.5s ease;
-    min-width: 4px;
-  }
-
-  /* Schedule */
-  .schedule {
-    padding: 16px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .block {
-    border-radius: 14px;
-    padding: 14px 16px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .block:active { transform: scale(0.98); }
-
-  .block::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0);
-    transition: background 0.2s;
-  }
-
-  .block:hover::after { background: rgba(255,255,255,0.08); }
-
-  .block.done { opacity: 0.55; }
-
-  .block.done .block-title { text-decoration: line-through; }
-
-  .block-check {
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    border: 2px solid currentColor;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    transition: background 0.2s;
-    position: relative;
-    z-index: 1;
-  }
-
-  .block.done .block-check {
-    background: currentColor;
-    color: white;
-  }
-
-  .block-check span { display: none; }
-  .block.done .block-check span { display: block; filter: invert(1); }
-
-  .block-info { flex: 1; position: relative; z-index: 1; }
-
-  .block-time {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    opacity: 0.65;
-    margin-bottom: 2px;
-    text-transform: uppercase;
-  }
-
-  .block-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 16px;
-    line-height: 1.2;
-  }
-
-  .block-sub {
-    font-size: 12px;
-    opacity: 0.6;
-    margin-top: 2px;
-  }
-
-  .block-emoji { font-size: 22px; position: relative; z-index: 1; }
-
-  /* Block colors */
-  .b-walk    { background: #EDE0F0; color: #7B5EA7; }
-  .b-deep    { background: #D6E9DC; color: #1F5C3A; }
-  .b-lunch   { background: var(--gold-light);  color: var(--gold); }
-  .b-workout { background: var(--accent-light);color: var(--accent); }
-  .b-light   { background: #D6E9DC; color: #1F5C3A; }
-  .b-family  { background: #EDE0F0; color: #7B5EA7; }
-  .b-other   { background: var(--warm); color: var(--muted); border: 1.5px dashed rgba(28,26,23,0.15); }
-
-  /* Section label */
-  .section-label {
-    padding: 4px 20px 0;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: var(--muted);
-    font-weight: 500;
-  }
-
-  /* Note area */
-  .note-area {
-    margin: 8px 20px 0;
-    background: white;
-    border-radius: 14px;
-    padding: 14px 16px;
-    border: 1.5px solid rgba(28,26,23,0.08);
-  }
-
-  .note-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    color: var(--muted);
-    margin-bottom: 8px;
-  }
-
-  .note-input {
-    width: 100%;
-    border: none;
-    outline: none;
-    background: transparent;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    color: var(--ink);
-    resize: none;
-    min-height: 60px;
-    line-height: 1.6;
-  }
-
-  .note-input::placeholder { color: var(--muted); }
-
-  /* Floating reminder to open calendar */
-  .calendar-hint {
-    margin: 12px 20px 0;
-    background: var(--blue-light);
-    border-radius: 12px;
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .calendar-hint p {
-    font-size: 12.5px;
-    color: var(--blue);
-    line-height: 1.4;
-    flex: 1;
-  }
-
-  .calendar-hint a {
-    flex-shrink: 0;
-    padding: 6px 14px;
-    background: var(--blue);
-    color: white;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 500;
-    text-decoration: none;
-    white-space: nowrap;
-  }
-
-  /* Bottom actions */
-  .bottom-actions {
-    display: flex;
-    gap: 10px;
-    padding: 16px 20px 0;
-  }
-
-  .action-btn {
-    flex: 1;
-    padding: 13px;
-    border-radius: 14px;
-    border: none;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-
-  .action-btn:hover { opacity: 0.85; }
-
-  .btn-calendar {
-    background: var(--ink);
-    color: var(--cream);
-  }
-
-  .btn-reminders {
-    background: var(--accent);
-    color: white;
-  }
-
-  /* Weekend message */
-  .weekend-msg {
-    margin: 20px;
-    padding: 24px;
-    background: var(--green-light);
-    border-radius: 16px;
-    text-align: center;
-    color: var(--green);
-  }
-
-  .weekend-msg .icon { font-size: 36px; margin-bottom: 10px; }
-  .weekend-msg h3 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    margin-bottom: 6px;
-  }
-
-  .weekend-msg p { font-size: 14px; opacity: 0.75; }
-
-  /* Motivational banner */
-  .motiv-banner {
-    margin: 14px 20px 0;
-    background: linear-gradient(135deg, #1C1A17 0%, #3B3528 100%);
-    border-radius: 16px;
-    padding: 18px 20px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .motiv-banner::before {
-    content: '✦';
-    position: absolute;
-    right: 18px; top: 12px;
-    font-size: 38px;
-    opacity: 0.07;
-    color: var(--cream);
-  }
-
-  .motiv-quote {
-    font-family: 'DM Serif Display', serif;
-    font-style: italic;
-    font-size: 15px;
-    color: var(--cream);
-    line-height: 1.5;
-    margin-bottom: 8px;
-  }
-
-  .motiv-sub {
-    font-size: 11.5px;
-    color: rgba(249,245,238,0.45);
-    letter-spacing: 0.3px;
-    line-height: 1.5;
-  }
-
-  .motiv-tag {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 4px 10px;
-    background: rgba(196,98,45,0.25);
-    color: #D4825A;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.4px;
-  }
-
-  /* Sunflower animation */
-  .sunflower-container {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-    overflow: hidden;
-  }
-
-  .sunflower {
-    position: absolute;
-    font-size: 28px;
-    animation: floatUp 1.8s ease-out forwards;
-    opacity: 0;
-  }
-
-  @keyframes floatUp {
-    0%   { opacity: 0; transform: translateY(0) scale(0.5) rotate(0deg); }
-    20%  { opacity: 1; transform: translateY(-60px) scale(1.1) rotate(15deg); }
-    80%  { opacity: 1; transform: translateY(-180px) scale(1) rotate(-10deg); }
-    100% { opacity: 0; transform: translateY(-260px) scale(0.8) rotate(20deg); }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    /* keep light for now — intentional choice */
-  }
-</style>
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+background: var(–cream);
+color: var(–ink);
+font-family: ‘DM Sans’, sans-serif;
+min-height: 100vh;
+padding: 0 0 60px 0;
+}
+
+header {
+background: #1C1A17;
+color: var(–cream);
+padding: 28px 24px 22px;
+position: relative;
+overflow: hidden;
+}
+
+header::before {
+content: ‘’;
+position: absolute;
+top: -40px; right: -40px;
+width: 180px; height: 180px;
+border-radius: 50%;
+background: rgba(196,98,45,0.18);
+}
+
+.header-top {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+margin-bottom: 6px;
+}
+
+.header-title {
+font-family: ‘DM Serif Display’, serif;
+font-size: 28px;
+line-height: 1.1;
+letter-spacing: -0.5px;
+}
+
+.header-title em {
+font-style: italic;
+color: #D4825A;
+}
+
+.header-date {
+font-size: 12px;
+font-weight: 300;
+color: rgba(249,245,238,0.55);
+margin-top: 4px;
+letter-spacing: 0.5px;
+text-transform: uppercase;
+}
+
+.quick-links {
+display: flex;
+gap: 8px;
+margin-top: 18px;
+}
+
+.quick-btn {
+display: flex;
+align-items: center;
+gap: 6px;
+padding: 7px 13px;
+border-radius: 20px;
+border: 1px solid rgba(249,245,238,0.3);
+background: rgba(249,245,238,0.12);
+color: #F9F5EE !important;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 12px;
+font-weight: 500;
+cursor: pointer;
+text-decoration: none !important;
+-webkit-text-fill-color: #F9F5EE !important;
+transition: background 0.2s, border-color 0.2s;
+}
+
+.quick-btn * {
+color: #F9F5EE !important;
+-webkit-text-fill-color: #F9F5EE !important;
+}
+
+.quick-btn:visited,
+.quick-btn:active,
+.quick-btn:link {
+color: #F9F5EE !important;
+-webkit-text-fill-color: #F9F5EE !important;
+}
+
+/* Day strip */
+.day-strip {
+display: flex;
+gap: 8px;
+padding: 16px 20px;
+overflow-x: auto;
+scrollbar-width: none;
+background: var(–warm);
+border-bottom: 1px solid rgba(28,26,23,0.08);
+}
+
+.day-strip::-webkit-scrollbar { display: none; }
+
+.day-pill {
+flex-shrink: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 8px 14px;
+border-radius: 12px;
+cursor: pointer;
+background: transparent;
+border: 1.5px solid transparent;
+transition: all 0.2s;
+font-family: ‘DM Sans’, sans-serif;
+}
+
+.day-pill.active {
+background: var(–ink);
+color: var(–cream);
+}
+
+.day-pill:not(.active):hover {
+border-color: rgba(28,26,23,0.15);
+background: rgba(28,26,23,0.04);
+}
+
+.day-pill .day-name {
+font-size: 11px;
+font-weight: 500;
+text-transform: uppercase;
+letter-spacing: 0.8px;
+color: var(–muted);
+}
+
+.day-pill.active .day-name {
+color: rgba(249,245,238,0.7) !important;
+-webkit-text-fill-color: rgba(249,245,238,0.7) !important;
+}
+
+.day-pill.active .day-num {
+color: #F9F5EE !important;
+-webkit-text-fill-color: #F9F5EE !important;
+}
+
+.day-pill .day-num {
+font-family: ‘DM Serif Display’, serif;
+font-size: 20px;
+line-height: 1.2;
+margin-top: 1px;
+}
+
+.day-pill .dot {
+width: 4px; height: 4px;
+border-radius: 50%;
+background: var(–accent);
+margin-top: 4px;
+opacity: 0;
+transition: opacity 0.2s;
+}
+
+.day-pill.has-done .dot { opacity: 1; }
+
+/* Progress bar */
+.progress-bar-wrap {
+padding: 14px 20px 10px;
+background: var(–warm);
+}
+
+.progress-label {
+display: flex;
+justify-content: space-between;
+font-size: 11px;
+color: var(–muted);
+text-transform: uppercase;
+letter-spacing: 0.6px;
+margin-bottom: 7px;
+}
+
+.progress-track {
+background: rgba(28,26,23,0.15);
+border-radius: 4px;
+height: 7px;
+overflow: hidden;
+}
+
+.progress-fill {
+height: 100%;
+background: #C4622D;
+border-radius: 4px;
+transition: width 0.5s ease;
+min-width: 4px;
+}
+
+/* Schedule */
+.schedule {
+padding: 16px 20px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+
+.block {
+border-radius: 14px;
+padding: 14px 16px;
+display: flex;
+align-items: center;
+gap: 14px;
+cursor: pointer;
+transition: transform 0.15s, box-shadow 0.15s;
+position: relative;
+overflow: hidden;
+}
+
+.block:active { transform: scale(0.98); }
+
+.block::after {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: rgba(255,255,255,0);
+transition: background 0.2s;
+}
+
+.block:hover::after { background: rgba(255,255,255,0.08); }
+
+.block.done { opacity: 0.55; }
+
+.block.done .block-title { text-decoration: line-through; }
+
+.block-check {
+width: 26px; height: 26px;
+border-radius: 50%;
+border: 2px solid currentColor;
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 13px;
+transition: background 0.2s;
+position: relative;
+z-index: 1;
+}
+
+.block.done .block-check {
+background: currentColor;
+color: white;
+}
+
+.block-check span { display: none; }
+.block.done .block-check span { display: block; filter: invert(1); }
+
+.block-info { flex: 1; position: relative; z-index: 1; }
+
+.block-time {
+font-size: 11px;
+font-weight: 500;
+letter-spacing: 0.5px;
+opacity: 0.65;
+margin-bottom: 2px;
+text-transform: uppercase;
+}
+
+.block-title {
+font-family: ‘DM Serif Display’, serif;
+font-size: 16px;
+line-height: 1.2;
+}
+
+.block-sub {
+font-size: 12px;
+opacity: 0.6;
+margin-top: 2px;
+}
+
+.block-emoji { font-size: 22px; position: relative; z-index: 1; }
+
+/* Block colors */
+.b-walk    { background: #EDE0F0; color: #7B5EA7; }
+.b-deep    { background: #D6E9DC; color: #1F5C3A; }
+.b-lunch   { background: var(–gold-light);  color: var(–gold); }
+.b-workout { background: var(–accent-light);color: var(–accent); }
+.b-light   { background: #D6E9DC; color: #1F5C3A; }
+.b-family  { background: #EDE0F0; color: #7B5EA7; }
+.b-other   { background: var(–warm); color: var(–muted); border: 1.5px dashed rgba(28,26,23,0.15); }
+
+/* Section label */
+.section-label {
+padding: 4px 20px 0;
+font-size: 10px;
+text-transform: uppercase;
+letter-spacing: 1.2px;
+color: var(–muted);
+font-weight: 500;
+}
+
+/* Note area */
+.note-area {
+margin: 8px 20px 0;
+background: white;
+border-radius: 14px;
+padding: 14px 16px;
+border: 1.5px solid rgba(28,26,23,0.08);
+}
+
+.note-label {
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 0.8px;
+color: var(–muted);
+margin-bottom: 8px;
+}
+
+.note-input {
+width: 100%;
+border: none;
+outline: none;
+background: transparent;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 14px;
+color: var(–ink);
+resize: none;
+min-height: 60px;
+line-height: 1.6;
+}
+
+.note-input::placeholder { color: var(–muted); }
+
+/* Floating reminder to open calendar */
+.calendar-hint {
+margin: 12px 20px 0;
+background: var(–blue-light);
+border-radius: 12px;
+padding: 12px 16px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.calendar-hint p {
+font-size: 12.5px;
+color: var(–blue);
+line-height: 1.4;
+flex: 1;
+}
+
+.calendar-hint a {
+flex-shrink: 0;
+padding: 6px 14px;
+background: var(–blue);
+color: white;
+border-radius: 20px;
+font-size: 12px;
+font-weight: 500;
+text-decoration: none;
+white-space: nowrap;
+}
+
+/* Bottom actions */
+.bottom-actions {
+display: flex;
+gap: 10px;
+padding: 16px 20px 0;
+}
+
+.action-btn {
+flex: 1;
+padding: 13px;
+border-radius: 14px;
+border: none;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 13px;
+font-weight: 500;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 7px;
+text-decoration: none;
+transition: opacity 0.2s;
+}
+
+.action-btn:hover { opacity: 0.85; }
+
+.btn-calendar {
+background: var(–ink);
+color: var(–cream);
+}
+
+.btn-reminders {
+background: var(–accent);
+color: white;
+}
+
+/* Weekend message */
+.weekend-msg {
+margin: 20px;
+padding: 24px;
+background: var(–green-light);
+border-radius: 16px;
+text-align: center;
+color: var(–green);
+}
+
+.weekend-msg .icon { font-size: 36px; margin-bottom: 10px; }
+.weekend-msg h3 {
+font-family: ‘DM Serif Display’, serif;
+font-size: 22px;
+margin-bottom: 6px;
+}
+
+.weekend-msg p { font-size: 14px; opacity: 0.75; }
+
+/* Motivational banner */
+.motiv-banner {
+margin: 14px 20px 0;
+background: linear-gradient(135deg, #1C1A17 0%, #3B3528 100%);
+border-radius: 16px;
+padding: 18px 20px;
+position: relative;
+overflow: hidden;
+}
+
+.motiv-banner::before {
+content: ‘✦’;
+position: absolute;
+right: 18px; top: 12px;
+font-size: 38px;
+opacity: 0.07;
+color: var(–cream);
+}
+
+.motiv-quote {
+font-family: ‘DM Serif Display’, serif;
+font-style: italic;
+font-size: 15px;
+color: var(–cream);
+line-height: 1.5;
+margin-bottom: 8px;
+}
+
+.motiv-sub {
+font-size: 11.5px;
+color: rgba(249,245,238,0.45);
+letter-spacing: 0.3px;
+line-height: 1.5;
+}
+
+.motiv-tag {
+display: inline-block;
+margin-top: 10px;
+padding: 4px 10px;
+background: rgba(196,98,45,0.25);
+color: #D4825A;
+border-radius: 20px;
+font-size: 11px;
+font-weight: 500;
+letter-spacing: 0.4px;
+}
+
+/* Sunflower animation */
+.sunflower-container {
+position: fixed;
+top: 0; left: 0;
+width: 100%; height: 100%;
+pointer-events: none;
+z-index: 9999;
+overflow: hidden;
+}
+
+.sunflower {
+position: absolute;
+font-size: 28px;
+animation: floatUp 1.8s ease-out forwards;
+opacity: 0;
+}
+
+@keyframes floatUp {
+0%   { opacity: 0; transform: translateY(0) scale(0.5) rotate(0deg); }
+20%  { opacity: 1; transform: translateY(-60px) scale(1.1) rotate(15deg); }
+80%  { opacity: 1; transform: translateY(-180px) scale(1) rotate(-10deg); }
+100% { opacity: 0; transform: translateY(-260px) scale(0.8) rotate(20deg); }
+}
+
+/* ── Pomodoro overlay ────────────────────────────────────────────────── */
+.pomo-overlay {
+display: none;
+position: fixed;
+inset: 0;
+background: var(–cream);
+z-index: 500;
+overflow-y: auto;
+padding-bottom: 40px;
+}
+
+.pomo-overlay.open { display: block; }
+
+.pomo-header {
+background: #1C1A17;
+color: var(–cream);
+padding: 20px 24px 18px;
+display: flex;
+align-items: center;
+gap: 14px;
+}
+
+.pomo-back {
+background: rgba(249,245,238,0.1);
+border: 1px solid rgba(249,245,238,0.2);
+color: #F9F5EE;
+border-radius: 10px;
+padding: 7px 14px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 13px;
+cursor: pointer;
+}
+
+.pomo-title {
+font-family: ‘DM Serif Display’, serif;
+font-size: 22px;
+color: var(–cream);
+}
+
+.pomo-title em { font-style: italic; color: #D4825A; }
+
+.pomo-mode-tabs {
+display: flex;
+gap: 0;
+margin: 20px 20px 0;
+background: var(–warm);
+border-radius: 12px;
+padding: 4px;
+}
+
+.pomo-tab {
+flex: 1;
+padding: 9px;
+border-radius: 9px;
+border: none;
+background: transparent;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 11px;
+font-weight: 500;
+color: var(–muted);
+cursor: pointer;
+transition: all 0.2s;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+}
+
+.pomo-tab.active {
+background: white;
+color: var(–ink);
+box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.pomo-timer-wrap {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 28px 20px 16px;
+}
+
+.pomo-ring-wrap {
+position: relative;
+width: 220px;
+height: 220px;
+}
+
+.pomo-svg {
+transform: rotate(-90deg);
+width: 220px;
+height: 220px;
+}
+
+.pomo-track {
+fill: none;
+stroke: var(–warm);
+stroke-width: 10;
+}
+
+.pomo-progress {
+fill: none;
+stroke: #C4622D;
+stroke-width: 10;
+stroke-linecap: round;
+stroke-dasharray: 628;
+stroke-dashoffset: 0;
+transition: stroke-dashoffset 1s linear, stroke 0.4s ease;
+}
+
+.pomo-progress.break-mode { stroke: #2D6A4F; }
+
+.pomo-center {
+position: absolute;
+inset: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.pomo-time {
+font-family: ‘DM Serif Display’, serif;
+font-size: 50px;
+letter-spacing: -2px;
+line-height: 1;
+color: var(–ink);
+}
+
+.pomo-label {
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 1.2px;
+color: var(–muted);
+margin-top: 6px;
+}
+
+.pomo-dots {
+display: flex;
+gap: 8px;
+margin-top: 16px;
+}
+
+.pomo-dot {
+width: 10px; height: 10px;
+border-radius: 50%;
+background: var(–warm);
+border: 1.5px solid var(–muted);
+transition: all 0.3s;
+}
+
+.pomo-dot.done { background: #C4622D; border-color: #C4622D; }
+.pomo-dot.current { background: transparent; border-color: #C4622D; transform: scale(1.2); }
+
+.pomo-controls {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 16px;
+padding: 4px 20px 16px;
+}
+
+.pomo-ctrl {
+border: none;
+cursor: pointer;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: all 0.2s;
+}
+
+.pomo-ctrl:active { transform: scale(0.93); }
+
+.pomo-ctrl.sec {
+width: 46px; height: 46px;
+background: var(–warm);
+color: var(–muted);
+font-size: 18px;
+}
+
+.pomo-ctrl.pri {
+width: 68px; height: 68px;
+background: #1C1A17;
+color: #F9F5EE;
+font-size: 26px;
+}
+
+.pomo-ctrl.pri.running { background: #C4622D; }
+
+.pomo-task {
+margin: 0 20px;
+background: white;
+border-radius: 14px;
+padding: 14px 16px;
+border: 1.5px solid rgba(28,26,23,0.08);
+}
+
+.pomo-task-label {
+font-size: 10px;
+text-transform: uppercase;
+letter-spacing: 1px;
+color: var(–muted);
+margin-bottom: 8px;
+}
+
+.pomo-task-input {
+width: 100%;
+border: none;
+outline: none;
+background: transparent;
+font-family: ‘DM Serif Display’, serif;
+font-style: italic;
+font-size: 16px;
+color: var(–ink);
+}
+
+.pomo-task-input::placeholder { color: #C5BFB4; }
+
+.pomo-stats {
+display: flex;
+gap: 10px;
+margin: 14px 20px 0;
+}
+
+.pomo-stat {
+flex: 1;
+background: var(–warm);
+border-radius: 12px;
+padding: 12px 14px;
+text-align: center;
+}
+
+.pomo-stat-num {
+font-family: ‘DM Serif Display’, serif;
+font-size: 24px;
+color: var(–ink);
+}
+
+.pomo-stat-label {
+font-size: 10px;
+text-transform: uppercase;
+letter-spacing: 0.8px;
+color: var(–muted);
+margin-top: 2px;
+}
+
+.pomo-settings {
+margin: 14px 20px 0;
+background: white;
+border-radius: 14px;
+padding: 14px 16px;
+border: 1.5px solid rgba(28,26,23,0.08);
+}
+
+.pomo-settings-label {
+font-size: 10px;
+text-transform: uppercase;
+letter-spacing: 1px;
+color: var(–muted);
+margin-bottom: 12px;
+}
+
+.pomo-setting-row {
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-bottom: 10px;
+}
+
+.pomo-setting-row:last-child { margin-bottom: 0; }
+.pomo-setting-name { font-size: 14px; color: var(–ink); }
+
+.pomo-setting-ctrls {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.pomo-setting-btn {
+width: 28px; height: 28px;
+border-radius: 8px;
+border: 1.5px solid rgba(28,26,23,0.12);
+background: var(–warm);
+color: var(–ink);
+font-size: 16px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.pomo-setting-val {
+font-family: ‘DM Serif Display’, serif;
+font-size: 18px;
+min-width: 30px;
+text-align: center;
+}
+
+.pomo-banner {
+display: none;
+position: fixed;
+bottom: 30px;
+left: 20px; right: 20px;
+background: #1C1A17;
+color: var(–cream);
+border-radius: 16px;
+padding: 16px 20px;
+z-index: 600;
+animation: slideUp 0.4s ease;
+}
+
+.pomo-banner.show { display: block; }
+
+.pomo-banner-title {
+font-family: ‘DM Serif Display’, serif;
+font-size: 18px;
+margin-bottom: 4px;
+}
+
+.pomo-banner-sub { font-size: 13px; color: rgba(249,245,238,0.6); }
+
+.pomo-banner-close {
+position: absolute;
+top: 12px; right: 14px;
+background: none;
+border: none;
+color: var(–cream);
+font-size: 18px;
+cursor: pointer;
+opacity: 0.6;
+}
+
+/* Pomodoro trigger button on deep work block */
+.pomo-trigger {
+display: inline-flex;
+align-items: center;
+gap: 5px;
+margin-top: 6px;
+padding: 5px 10px;
+background: rgba(45,106,79,0.15);
+border: 1px solid rgba(45,106,79,0.3);
+border-radius: 20px;
+font-size: 11px;
+font-weight: 500;
+color: #1F5C3A;
+cursor: pointer;
+font-family: ‘DM Sans’, sans-serif;
+}
+
+@keyframes slideUp {
+from { transform: translateY(20px); opacity: 0; }
+to   { transform: translateY(0); opacity: 1; }
+}
+
 </head>
 <body>
 
@@ -614,9 +964,11 @@ function roundRect(ctx, x, y, w, h, r) {
 </header>
 
 <!-- Day selector -->
+
 <div class="day-strip" id="dayStrip"></div>
 
 <!-- Progress -->
+
 <div class="progress-bar-wrap">
   <div class="progress-label">
     <span>Today's progress</span>
@@ -628,12 +980,14 @@ function roundRect(ctx, x, y, w, h, r) {
 </div>
 
 <!-- Calendar hint -->
+
 <div class="calendar-hint">
   <p>Tap <strong>Calendar</strong> above to check your appointments for today.</p>
   <a href="#" onclick="openCalendar(event)">Open →</a>
 </div>
 
 <!-- Motivational banner -->
+
 <div class="motiv-banner" id="motivBanner">
   <div class="motiv-quote" id="motivQuote"></div>
   <div class="motiv-sub" id="motivSub"></div>
@@ -641,15 +995,18 @@ function roundRect(ctx, x, y, w, h, r) {
 </div>
 
 <!-- Schedule -->
+
 <div id="scheduleArea"></div>
 
 <!-- Note -->
+
 <div class="note-area">
   <div class="note-label">📝 Today's note</div>
   <textarea class="note-input" id="noteInput" placeholder="What do you want to focus on today? Any thought…" rows="3"></textarea>
 </div>
 
 <!-- Bottom actions -->
+
 <div class="bottom-actions">
   <button class="action-btn btn-calendar" onclick="openCalendar(event)">
     <span>📅</span> Open Calendar
@@ -862,6 +1219,7 @@ function renderSchedule() {
         <div class="block-time">${block.time}</div>
         <div class="block-title">${block.title}</div>
         ${block.sub ? `<div class="block-sub">${block.sub}</div>` : ''}
+        ${block.id === 'deep' ? `<button class="pomo-trigger" onclick="event.stopPropagation(); openPomodoro()">🍅 Start Pomodoro</button>` : ''}
       </div>
       <div class="block-emoji">${block.emoji}</div>
     `;
@@ -984,8 +1342,251 @@ function launchSunflowers(originEl) {
 }
 
 
-renderMotiv();
-renderAll();
+<!-- ── Pomodoro Overlay ──────────────────────────────────────────────────── -->
+<div class="pomo-overlay" id="pomoOverlay">
+
+  <div class="pomo-header">
+    <button class="pomo-back" onclick="closePomodoro()">← Back</button>
+    <div class="pomo-title">Aggie's <em>Focus</em></div>
+  </div>
+
+  <div class="pomo-mode-tabs">
+    <button class="pomo-tab active" id="pomoTabFocus" onclick="pomoSetMode('focus')">Focus</button>
+    <button class="pomo-tab" id="pomoTabShort" onclick="pomoSetMode('short')">Short Break</button>
+    <button class="pomo-tab" id="pomoTabLong" onclick="pomoSetMode('long')">Long Break</button>
+  </div>
+
+  <div class="pomo-timer-wrap">
+    <div class="pomo-ring-wrap">
+      <svg class="pomo-svg" viewBox="0 0 220 220">
+        <circle class="pomo-track" cx="110" cy="110" r="100"/>
+        <circle class="pomo-progress" id="pomoProgress" cx="110" cy="110" r="100"/>
+      </svg>
+      <div class="pomo-center">
+        <div class="pomo-time" id="pomoDisplay">25:00</div>
+        <div class="pomo-label" id="pomoLabel">Deep Focus 🤓</div>
+      </div>
+    </div>
+    <div class="pomo-dots" id="pomoDots"></div>
+  </div>
+
+  <div class="pomo-controls">
+    <button class="pomo-ctrl sec" onclick="pomoReset()">↺</button>
+    <button class="pomo-ctrl pri" id="pomoPlayBtn" onclick="pomoToggle()">▶</button>
+    <button class="pomo-ctrl sec" onclick="pomoSkip()">⏭</button>
+  </div>
+
+  <div class="pomo-task">
+    <div class="pomo-task-label">📖 Working on</div>
+    <input class="pomo-task-input" type="text" placeholder="What are you focusing on right now?" id="pomoTaskInput">
+  </div>
+
+  <div class="pomo-stats">
+    <div class="pomo-stat">
+      <div class="pomo-stat-num" id="pomoStatSessions">0</div>
+      <div class="pomo-stat-label">Sessions</div>
+    </div>
+    <div class="pomo-stat">
+      <div class="pomo-stat-num" id="pomoStatMinutes">0</div>
+      <div class="pomo-stat-label">Min focused</div>
+    </div>
+    <div class="pomo-stat">
+      <div class="pomo-stat-num" id="pomoStatStreak">—</div>
+      <div class="pomo-stat-label">Cycles done</div>
+    </div>
+  </div>
+
+  <div class="pomo-settings">
+    <div class="pomo-settings-label">⚙️ Timer settings</div>
+    <div class="pomo-setting-row">
+      <div class="pomo-setting-name">Focus</div>
+      <div class="pomo-setting-ctrls">
+        <button class="pomo-setting-btn" onclick="pomoAdjust('focus',-5)">−</button>
+        <div class="pomo-setting-val" id="pomoSetFocus">25</div>
+        <button class="pomo-setting-btn" onclick="pomoAdjust('focus',5)">+</button>
+      </div>
+    </div>
+    <div class="pomo-setting-row">
+      <div class="pomo-setting-name">Short break</div>
+      <div class="pomo-setting-ctrls">
+        <button class="pomo-setting-btn" onclick="pomoAdjust('short',-1)">−</button>
+        <div class="pomo-setting-val" id="pomoSetShort">5</div>
+        <button class="pomo-setting-btn" onclick="pomoAdjust('short',1)">+</button>
+      </div>
+    </div>
+    <div class="pomo-setting-row">
+      <div class="pomo-setting-name">Long break</div>
+      <div class="pomo-setting-ctrls">
+        <button class="pomo-setting-btn" onclick="pomoAdjust('long',-5)">−</button>
+        <div class="pomo-setting-val" id="pomoSetLong">15</div>
+        <button class="pomo-setting-btn" onclick="pomoAdjust('long',5)">+</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="pomo-banner" id="pomoBanner">
+  <button class="pomo-banner-close" onclick="pomoCloseBanner()">✕</button>
+  <div class="pomo-banner-title" id="pomoBannerTitle">🌻 Session complete!</div>
+  <div class="pomo-banner-sub" id="pomoBannerSub">Take a well-deserved break, Aggie.</div>
+</div>
+
+<script>
+// ── Pomodoro State ─────────────────────────────────────────────────────────
+const pomoSettings = { focus: 25, short: 5, long: 15 };
+let pomoMode = 'focus';
+let pomoTimeLeft = 25 * 60;
+let pomoTotalTime = 25 * 60;
+let pomoRunning = false;
+let pomoInterval = null;
+let pomoSessions = 0;
+let pomoMinutes = 0;
+let pomoCycleCount = 0;
+const POMO_CIRC = 2 * Math.PI * 100; // 628
+
+function openPomodoro() {
+  document.getElementById('pomoOverlay').classList.add('open');
+  pomoUpdateDisplay();
+  pomoUpdateRing();
+  pomoUpdateDots();
+}
+
+function closePomodoro() {
+  document.getElementById('pomoOverlay').classList.remove('open');
+}
+
+function pomoSetMode(mode) {
+  pomoMode = mode;
+  clearInterval(pomoInterval);
+  pomoRunning = false;
+  document.getElementById('pomoPlayBtn').textContent = '▶';
+  document.getElementById('pomoPlayBtn').classList.remove('running');
+  const mins = mode === 'focus' ? pomoSettings.focus : mode === 'short' ? pomoSettings.short : pomoSettings.long;
+  pomoTimeLeft = mins * 60;
+  pomoTotalTime = mins * 60;
+  const labels = { focus: 'Deep Focus 🤓', short: 'Short Break 🌿', long: 'Long Break ☕' };
+  document.getElementById('pomoLabel').textContent = labels[mode];
+  document.getElementById('pomoProgress').classList.toggle('break-mode', mode !== 'focus');
+  ['pomoTabFocus','pomoTabShort','pomoTabLong'].forEach(id => document.getElementById(id).classList.remove('active'));
+  document.getElementById(mode === 'focus' ? 'pomoTabFocus' : mode === 'short' ? 'pomoTabShort' : 'pomoTabLong').classList.add('active');
+  pomoUpdateDisplay();
+  pomoUpdateRing();
+}
+
+function pomoToggle() {
+  if (pomoRunning) {
+    clearInterval(pomoInterval);
+    pomoRunning = false;
+    document.getElementById('pomoPlayBtn').textContent = '▶';
+    document.getElementById('pomoPlayBtn').classList.remove('running');
+  } else {
+    pomoRunning = true;
+    document.getElementById('pomoPlayBtn').textContent = '⏸';
+    document.getElementById('pomoPlayBtn').classList.add('running');
+    pomoInterval = setInterval(pomoTick, 1000);
+  }
+}
+
+function pomoTick() {
+  pomoTimeLeft--;
+  pomoUpdateDisplay();
+  pomoUpdateRing();
+  if (pomoTimeLeft <= 0) {
+    clearInterval(pomoInterval);
+    pomoRunning = false;
+    pomoOnComplete();
+  }
+}
+
+function pomoOnComplete() {
+  document.getElementById('pomoPlayBtn').textContent = '▶';
+  document.getElementById('pomoPlayBtn').classList.remove('running');
+  if (pomoMode === 'focus') {
+    pomoSessions++;
+    pomoCycleCount++;
+    pomoMinutes += pomoSettings.focus;
+    pomoUpdateStats();
+    launchSunflowers(document.getElementById('pomoPlayBtn'));
+    pomoShowBanner('🌻 Focus session done!', 'Wonderful work, Aggie. Take a break!');
+    setTimeout(() => {
+      if (pomoSessions % 4 === 0) pomoSetMode('long');
+      else pomoSetMode('short');
+      pomoUpdateDots();
+    }, 2000);
+  } else {
+    pomoShowBanner('✨ Break over!', 'Ready for another deep work session? 🤓');
+    setTimeout(() => pomoSetMode('focus'), 2000);
+  }
+  pomoUpdateDots();
+}
+
+function pomoReset() {
+  clearInterval(pomoInterval);
+  pomoRunning = false;
+  document.getElementById('pomoPlayBtn').textContent = '▶';
+  document.getElementById('pomoPlayBtn').classList.remove('running');
+  const mins = pomoMode === 'focus' ? pomoSettings.focus : pomoMode === 'short' ? pomoSettings.short : pomoSettings.long;
+  pomoTimeLeft = mins * 60;
+  pomoTotalTime = mins * 60;
+  pomoUpdateDisplay();
+  pomoUpdateRing();
+}
+
+function pomoSkip() {
+  clearInterval(pomoInterval);
+  pomoRunning = false;
+  pomoTimeLeft = 0;
+  pomoUpdateDisplay();
+  pomoUpdateRing();
+  pomoOnComplete();
+}
+
+function pomoAdjust(key, delta) {
+  pomoSettings[key] = Math.max(1, pomoSettings[key] + delta);
+  document.getElementById('pomoSet' + key.charAt(0).toUpperCase() + key.slice(1)).textContent = pomoSettings[key];
+  if (pomoMode === key) pomoSetMode(key);
+}
+
+function pomoUpdateDisplay() {
+  const m = Math.floor(pomoTimeLeft / 60).toString().padStart(2,'0');
+  const s = (pomoTimeLeft % 60).toString().padStart(2,'0');
+  document.getElementById('pomoDisplay').textContent = `${m}:${s}`;
+}
+
+function pomoUpdateRing() {
+  const pct = pomoTimeLeft / pomoTotalTime;
+  document.getElementById('pomoProgress').style.strokeDashoffset = POMO_CIRC * (1 - pct);
+}
+
+function pomoUpdateDots() {
+  const dots = document.getElementById('pomoDots');
+  dots.innerHTML = '';
+  const pos = pomoSessions % 4;
+  for (let i = 0; i < 4; i++) {
+    const d = document.createElement('div');
+    d.className = 'pomo-dot' + (i < pos ? ' done' : i === pos && pomoMode === 'focus' ? ' current' : '');
+    dots.appendChild(d);
+  }
+}
+
+function pomoUpdateStats() {
+  document.getElementById('pomoStatSessions').textContent = pomoSessions;
+  document.getElementById('pomoStatMinutes').textContent = pomoMinutes;
+  document.getElementById('pomoStatStreak').textContent = Math.floor(pomoSessions / 4) || '—';
+}
+
+function pomoShowBanner(title, sub) {
+  document.getElementById('pomoBannerTitle').textContent = title;
+  document.getElementById('pomoBannerSub').textContent = sub;
+  document.getElementById('pomoBanner').classList.add('show');
+  setTimeout(pomoCloseBanner, 5000);
+}
+
+function pomoCloseBanner() {
+  document.getElementById('pomoBanner').classList.remove('show');
+}
 </script>
+
 </body>
 </html>
