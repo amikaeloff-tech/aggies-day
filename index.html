@@ -358,7 +358,6 @@ function renderAll(){
   renderHeader();
   renderDayStrip();
   renderSchedule();
-  renderMotiv();
 }
 
 // ─────────────────────────────────────────────
@@ -428,7 +427,7 @@ var wednesdayQuotes=[
 ];
 
 function renderMotiv(){
-  var now=selectedDate;
+  var now=today;
   var isWed=now.getDay()===3;
   var pool=isWed?wednesdayQuotes:quotes;
   var dayOfYear=Math.floor((now-new Date(now.getFullYear(),0,0))/86400000);
