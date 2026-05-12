@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -8,6 +7,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Aggie's Day">
+<meta name="theme-color" content="#2A4A45">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -28,29 +29,29 @@
 body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;min-height:100vh;padding-bottom:60px;}
 
 /* ── HEADER ── */
-header{background:#1C1A17;color:#F9F5EE;padding:28px 24px 22px;position:relative;}
-header::before{content:’’;position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(196,98,45,0.18);pointer-events:none;}
-.header-title{font-family:‘DM Serif Display’,serif;font-size:28px;line-height:1.1;color:#F9F5EE;}
+header{background:linear-gradient(135deg,#2A4A45 0%,#3A5E58 100%);color:#F9F5EE;padding:28px 24px 22px;position:relative;}
+header::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(196,98,45,0.15);pointer-events:none;}
+.header-title{font-family:'DM Serif Display',serif;font-size:28px;line-height:1.1;color:#F9F5EE;}
 .header-title em{font-style:italic;color:#D4825A;}
 .header-date{font-size:12px;font-weight:300;color:rgba(249,245,238,0.55);margin-top:4px;letter-spacing:.5px;text-transform:uppercase;}
 .quick-links{display:flex;gap:8px;margin-top:18px;}
-.quick-btn{display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:20px;border:1px solid rgba(249,245,238,0.25);background:rgba(249,245,238,0.1);color:#F9F5EE;font-family:‘DM Sans’,sans-serif;font-size:12px;font-weight:500;cursor:pointer;}
+.quick-btn{display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:20px;border:1px solid rgba(249,245,238,0.25);background:rgba(249,245,238,0.1);color:#F9F5EE;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;}
 
 /* ── DAY STRIP ── */
-.day-strip{display:flex;gap:8px;padding:16px 20px;overflow-x:auto;scrollbar-width:none;background:var(–warm);border-bottom:1px solid rgba(28,26,23,0.08);}
+.day-strip{display:flex;gap:8px;padding:16px 20px;overflow-x:auto;scrollbar-width:none;background:var(--warm);border-bottom:1px solid rgba(28,26,23,0.08);}
 .day-strip::-webkit-scrollbar{display:none;}
-.day-pill{flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:8px 14px;border-radius:12px;cursor:pointer;background:transparent;border:1.5px solid transparent;transition:all .2s;font-family:‘DM Sans’,sans-serif;}
-.day-pill.active{background:#1C1A17;color:var(–cream);}
-.day-name{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.8px;color:var(–muted);}
+.day-pill{flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:8px 14px;border-radius:12px;cursor:pointer;background:transparent;border:1.5px solid transparent;transition:all .2s;font-family:'DM Sans',sans-serif;}
+.day-pill.active{background:#1C1A17;color:var(--cream);}
+.day-name{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);}
 .day-pill.active .day-name{color:rgba(249,245,238,0.65);}
-.day-num{font-family:‘DM Serif Display’,serif;font-size:20px;line-height:1.2;margin-top:1px;}
+.day-num{font-family:'DM Serif Display',serif;font-size:20px;line-height:1.2;margin-top:1px;}
 .day-pill.active .day-num{color:#F9F5EE;}
-.dot{width:4px;height:4px;border-radius:50%;background:var(–accent);margin-top:4px;opacity:0;}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--accent);margin-top:4px;opacity:0;}
 .day-pill.has-done .dot{opacity:1;}
 
 /* ── PROGRESS ── */
-.progress-wrap{padding:14px 20px 10px;background:var(–warm);}
-.progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(–muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px;}
+.progress-wrap{padding:14px 20px 10px;background:var(--warm);}
+.progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px;}
 .progress-track{background:rgba(28,26,23,0.12);border-radius:4px;height:6px;overflow:hidden;}
 .progress-fill{height:100%;background:#C4622D;border-radius:4px;transition:width .5s ease;}
 
@@ -60,14 +61,14 @@ header::before{content:’’;position:absolute;top:-40px;right:-40px;width:180p
 .cal-hint button{flex-shrink:0;padding:6px 14px;background:#3B5F8A;color:white;border:none;border-radius:20px;font-size:12px;font-weight:500;cursor:pointer;}
 
 /* ── MOTIVATION BANNER ── */
-.motiv-banner{margin:14px 20px 0;background:linear-gradient(135deg,#1C1A17 0%,#3B3528 100%);border-radius:16px;padding:18px 20px;position:relative;}
-.motiv-banner::before{content:‘✦’;position:absolute;right:18px;top:12px;font-size:38px;opacity:.07;color:#F9F5EE;pointer-events:none;}
-.motiv-quote{font-family:‘DM Serif Display’,serif;font-style:italic;font-size:15px;color:#F9F5EE;line-height:1.6;margin-bottom:8px;}
+.motiv-banner{margin:14px 20px 0;background:linear-gradient(135deg,#2A4A45 0%,#3A5E58 100%);border-radius:16px;padding:18px 20px;position:relative;}
+.motiv-banner::before{content:'✦';position:absolute;right:18px;top:12px;font-size:38px;opacity:.07;color:#F9F5EE;pointer-events:none;}
+.motiv-quote{font-family:'DM Serif Display',serif;font-style:italic;font-size:15px;color:#F9F5EE;line-height:1.6;margin-bottom:8px;}
 .motiv-sub{font-size:11.5px;color:rgba(249,245,238,0.5);line-height:1.5;}
 .motiv-tag{display:inline-block;margin-top:10px;padding:4px 10px;background:rgba(196,98,45,0.25);color:#D4825A;border-radius:20px;font-size:11px;font-weight:500;}
 
 /* ── SCHEDULE ── */
-.section-label{padding:16px 20px 4px;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(–muted);font-weight:500;}
+.section-label{padding:16px 20px 4px;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);font-weight:500;}
 .schedule{padding:0 20px 16px 20px;display:flex;flex-direction:column;gap:10px;}
 .block{border-radius:14px;padding:14px 16px;display:flex;align-items:flex-start;gap:14px;cursor:pointer;transition:transform .15s;}
 .block:active{transform:scale(0.98);}
@@ -79,7 +80,7 @@ header::before{content:’’;position:absolute;top:-40px;right:-40px;width:180p
 .block.done .block-check-inner{display:block;}
 .block-info{flex:1;}
 .block-time{font-size:11px;font-weight:500;letter-spacing:.5px;opacity:.65;margin-bottom:2px;text-transform:uppercase;}
-.block-title{font-family:‘DM Serif Display’,serif;font-size:16px;line-height:1.2;}
+.block-title{font-family:'DM Serif Display',serif;font-size:16px;line-height:1.2;}
 .block-sub{font-size:12px;opacity:.6;margin-top:2px;}
 .block-emoji{font-size:22px;margin-top:2px;}
 
@@ -92,98 +93,49 @@ header::before{content:’’;position:absolute;top:-40px;right:-40px;width:180p
 .b-family {background:#EDE0F0 !important;color:#7B5EA7 !important;}
 
 /* Pomodoro trigger */
-.pomo-trigger{display:inline-flex;align-items:center;gap:5px;margin-top:8px;padding:5px 10px;background:rgba(45,106,79,0.15);border:1px solid rgba(45,106,79,0.3);border-radius:20px;font-size:11px;font-weight:500;color:#1F5C3A;cursor:pointer;font-family:‘DM Sans’,sans-serif;}
 
 /* ── NOTE ── */
 .note-area{margin:14px 20px 0;background:white;border-radius:14px;padding:14px 16px;border:1.5px solid rgba(28,26,23,0.08);}
-.note-label{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(–muted);margin-bottom:8px;}
-.note-input{width:100%;border:none;outline:none;background:transparent;font-family:‘DM Sans’,sans-serif;font-size:14px;color:var(–ink);resize:none;min-height:60px;line-height:1.6;}
-.note-input::placeholder{color:var(–muted);}
+.note-label{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:8px;}
+.note-input{width:100%;border:none;outline:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--ink);resize:none;min-height:60px;line-height:1.6;}
+.note-input::placeholder{color:var(--muted);}
 
 /* ── BOTTOM ACTIONS ── */
 .bottom-actions{display:flex;gap:10px;padding:16px 20px 0;}
-.action-btn{flex:1;padding:13px;border-radius:14px;border:none;font-family:‘DM Sans’,sans-serif;font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;}
+.action-btn{flex:1;padding:13px;border-radius:14px;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;}
 .btn-calendar{background:#1C1A17;color:#F9F5EE;}
 .btn-reminders{background:#C4622D;color:white;}
 
 /* ── WEEKEND ── */
-.weekend-msg{margin:20px;padding:24px;background:var(–mauve);border-radius:16px;text-align:center;color:var(–mauve-dark);}
+.weekend-msg{margin:20px;padding:24px;background:var(--mauve);border-radius:16px;text-align:center;color:var(--mauve-dark);}
 .weekend-msg .icon{font-size:36px;margin-bottom:10px;}
-.weekend-msg h3{font-family:‘DM Serif Display’,serif;font-size:22px;margin-bottom:6px;}
+.weekend-msg h3{font-family:'DM Serif Display',serif;font-size:22px;margin-bottom:6px;}
 .weekend-msg p{font-size:14px;opacity:.75;}
 
 /* ── SUNFLOWER ANIMATION ── */
 .sunflower-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;overflow:hidden;}
 .sunflower{position:absolute;animation:floatUp 1.8s ease-out forwards;opacity:0;}
 @keyframes floatUp{
-0%  {opacity:0;transform:translateY(0) scale(.5) rotate(0deg);}
-20% {opacity:1;transform:translateY(-60px) scale(1.1) rotate(15deg);}
-80% {opacity:1;transform:translateY(-180px) scale(1) rotate(-10deg);}
-100%{opacity:0;transform:translateY(-260px) scale(.8) rotate(20deg);}
+  0%  {opacity:0;transform:translateY(0) scale(.5) rotate(0deg);}
+  20% {opacity:1;transform:translateY(-60px) scale(1.1) rotate(15deg);}
+  80% {opacity:1;transform:translateY(-180px) scale(1) rotate(-10deg);}
+  100%{opacity:0;transform:translateY(-260px) scale(.8) rotate(20deg);}
 }
 
-/* ── POMODORO OVERLAY ── */
-.pomo-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;width:100%;height:100%;background:#F9F5EE;z-index:500;overflow-y:auto;-webkit-overflow-scrolling:touch;}
-.pomo-overlay.open{display:block;}
-.pomo-header{background:#1C1A17;color:var(–cream);padding:20px 24px 18px;display:flex;align-items:center;gap:14px;}
-.pomo-back{background:rgba(249,245,238,0.1);border:1px solid rgba(249,245,238,0.2);color:#F9F5EE;border-radius:10px;padding:7px 14px;font-family:‘DM Sans’,sans-serif;font-size:13px;cursor:pointer;}
-.pomo-header-title{font-family:‘DM Serif Display’,serif;font-size:22px;color:var(–cream);}
-.pomo-header-title em{font-style:italic;color:#D4825A;}
-.pomo-tabs{display:flex;gap:0;margin:20px 20px 0;background:var(–warm);border-radius:12px;padding:4px;}
-.pomo-tab{flex:1;padding:9px;border-radius:9px;border:none;background:transparent;font-family:‘DM Sans’,sans-serif;font-size:11px;font-weight:500;color:var(–muted);cursor:pointer;transition:all .2s;text-transform:uppercase;letter-spacing:.5px;}
-.pomo-tab.active{background:white;color:var(–ink);box-shadow:0 1px 4px rgba(0,0,0,.08);}
-.pomo-ring-wrap{display:flex;flex-direction:column;align-items:center;padding:28px 20px 16px;}
-.pomo-svg-wrap{position:relative;width:220px;height:220px;}
-.pomo-svg{transform:rotate(-90deg);width:220px;height:220px;}
-.pomo-track{fill:none;stroke:var(–warm);stroke-width:10;}
-.pomo-arc{fill:none;stroke:#C4622D;stroke-width:10;stroke-linecap:round;stroke-dasharray:628;stroke-dashoffset:0;transition:stroke-dashoffset 1s linear,stroke .4s;}
-.pomo-arc.brk{stroke:#2D6A4F;}
-.pomo-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.pomo-time{font-family:‘DM Serif Display’,serif;font-size:50px;letter-spacing:-2px;line-height:1;color:var(–ink);}
-.pomo-mode-label{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:var(–muted);margin-top:6px;}
-.pomo-dots{display:flex;gap:8px;margin-top:16px;}
-.pomo-dot{width:10px;height:10px;border-radius:50%;background:var(–warm);border:1.5px solid var(–muted);transition:all .3s;}
-.pomo-dot.done{background:#C4622D;border-color:#C4622D;}
-.pomo-dot.cur{background:transparent;border-color:#C4622D;transform:scale(1.2);}
-.pomo-ctrls{display:flex;align-items:center;justify-content:center;gap:16px;padding:4px 20px 16px;}
-.pomo-btn{border:none;cursor:pointer;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .2s;}
-.pomo-btn:active{transform:scale(.93);}
-.pomo-btn.sec{width:46px;height:46px;background:var(–warm);color:var(–muted);font-size:18px;}
-.pomo-btn.pri{width:68px;height:68px;background:#1C1A17;color:#F9F5EE;font-size:26px;}
-.pomo-btn.pri.on{background:#C4622D;}
-.pomo-task-box{margin:0 20px;background:white;border-radius:14px;padding:14px 16px;border:1.5px solid rgba(28,26,23,.08);}
-.pomo-task-label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(–muted);margin-bottom:8px;}
-.pomo-task-input{width:100%;border:none;outline:none;background:transparent;font-family:‘DM Serif Display’,serif;font-style:italic;font-size:16px;color:var(–ink);}
-.pomo-task-input::placeholder{color:#C5BFB4;}
-.pomo-stats{display:flex;gap:10px;margin:14px 20px 0;}
-.pomo-stat{flex:1;background:var(–warm);border-radius:12px;padding:12px 14px;text-align:center;}
-.pomo-stat-num{font-family:‘DM Serif Display’,serif;font-size:24px;color:var(–ink);}
-.pomo-stat-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(–muted);margin-top:2px;}
-.pomo-settings-box{margin:14px 20px 0;background:white;border-radius:14px;padding:14px 16px;border:1.5px solid rgba(28,26,23,.08);}
-.pomo-settings-lbl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(–muted);margin-bottom:12px;}
-.pomo-set-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
-.pomo-set-row:last-child{margin-bottom:0;}
-.pomo-set-name{font-size:14px;color:var(–ink);}
-.pomo-set-ctrls{display:flex;align-items:center;gap:12px;}
-.pomo-set-btn{width:28px;height:28px;border-radius:8px;border:1.5px solid rgba(28,26,23,.12);background:var(–warm);color:var(–ink);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-.pomo-set-val{font-family:‘DM Serif Display’,serif;font-size:18px;min-width:30px;text-align:center;}
-
 /* ── TOAST BANNER ── */
-.toast{display:none;position:fixed;bottom:30px;left:20px;right:20px;background:#1C1A17;color:var(–cream);border-radius:16px;padding:16px 20px;z-index:999;animation:slideUp .4s ease;}
+.toast{display:none;position:fixed;bottom:30px;left:20px;right:20px;background:#1C1A17;color:var(--cream);border-radius:16px;padding:16px 20px;z-index:999;animation:slideUp .4s ease;}
 .toast.show{display:block;}
-.toast-title{font-family:‘DM Serif Display’,serif;font-size:18px;margin-bottom:4px;}
+.toast-title{font-family:'DM Serif Display',serif;font-size:18px;margin-bottom:4px;}
 .toast-sub{font-size:13px;color:rgba(249,245,238,.6);}
-.toast-close{position:absolute;top:12px;right:14px;background:none;border:none;color:var(–cream);font-size:18px;cursor:pointer;opacity:.6;}
+.toast-close{position:absolute;top:12px;right:14px;background:none;border:none;color:var(--cream);font-size:18px;cursor:pointer;opacity:.6;}
 @keyframes slideUp{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
 </style>
-
 </head>
 <body>
 
 <div class="sunflower-container" id="sunflowerContainer"></div>
 
 <!-- MAIN APP -->
-
 <div id="mainApp">
 
 <header>
@@ -192,6 +144,7 @@ header::before{content:’’;position:absolute;top:-40px;right:-40px;width:180p
   <div class="quick-links">
     <button class="quick-btn" onclick="openCalendar()">📅 Calendar</button>
     <button class="quick-btn" onclick="openReminders()">🔔 Reminders</button>
+    <button class="quick-btn" onclick="openWeather()">🌤️ Weather</button>
   </div>
 </header>
 
@@ -232,82 +185,6 @@ header::before{content:’’;position:absolute;top:-40px;right:-40px;width:180p
 </div>
 
 </div><!-- end mainApp -->
-
-<!-- POMODORO OVERLAY -->
-
-<div class="pomo-overlay" id="pomoOverlay">
-
-  <div class="pomo-header">
-    <button class="pomo-back" onclick="closePomodoro()">← Back</button>
-    <div class="pomo-header-title">Aggie's <em>Focus</em></div>
-  </div>
-
-  <div class="pomo-tabs">
-    <button class="pomo-tab active" id="ptFocus" onclick="pomoSetMode('focus')">Focus</button>
-    <button class="pomo-tab" id="ptShort" onclick="pomoSetMode('short')">Short Break</button>
-    <button class="pomo-tab" id="ptLong" onclick="pomoSetMode('long')">Long Break</button>
-  </div>
-
-  <div class="pomo-ring-wrap">
-    <div class="pomo-svg-wrap">
-      <svg class="pomo-svg" viewBox="0 0 220 220">
-        <circle class="pomo-track" cx="110" cy="110" r="100"/>
-        <circle class="pomo-arc" id="pomoArc" cx="110" cy="110" r="100"/>
-      </svg>
-      <div class="pomo-center">
-        <div class="pomo-time" id="pomoTime">25:00</div>
-        <div class="pomo-mode-label" id="pomoModeLabel">Deep Focus 🤓</div>
-      </div>
-    </div>
-    <div class="pomo-dots" id="pomoDots"></div>
-  </div>
-
-  <div class="pomo-ctrls">
-    <button class="pomo-btn sec" onclick="pomoReset()">↺</button>
-    <button class="pomo-btn pri" id="pomoPlay" onclick="pomoToggle()">▶</button>
-    <button class="pomo-btn sec" onclick="pomoSkip()">⏭</button>
-  </div>
-
-  <div class="pomo-task-box">
-    <div class="pomo-task-label">📖 Working on</div>
-    <input class="pomo-task-input" type="text" placeholder="What are you focusing on right now?">
-  </div>
-
-  <div class="pomo-stats">
-    <div class="pomo-stat"><div class="pomo-stat-num" id="pSessions">0</div><div class="pomo-stat-lbl">Sessions</div></div>
-    <div class="pomo-stat"><div class="pomo-stat-num" id="pMinutes">0</div><div class="pomo-stat-lbl">Min focused</div></div>
-    <div class="pomo-stat"><div class="pomo-stat-num" id="pCycles">—</div><div class="pomo-stat-lbl">Cycles done</div></div>
-  </div>
-
-  <div class="pomo-settings-box">
-    <div class="pomo-settings-lbl">⚙️ Timer settings</div>
-    <div class="pomo-set-row">
-      <div class="pomo-set-name">Focus</div>
-      <div class="pomo-set-ctrls">
-        <button class="pomo-set-btn" onclick="pomoAdjust('focus',-5)">−</button>
-        <div class="pomo-set-val" id="pvFocus">25</div>
-        <button class="pomo-set-btn" onclick="pomoAdjust('focus',5)">+</button>
-      </div>
-    </div>
-    <div class="pomo-set-row">
-      <div class="pomo-set-name">Short break</div>
-      <div class="pomo-set-ctrls">
-        <button class="pomo-set-btn" onclick="pomoAdjust('short',-1)">−</button>
-        <div class="pomo-set-val" id="pvShort">5</div>
-        <button class="pomo-set-btn" onclick="pomoAdjust('short',1)">+</button>
-      </div>
-    </div>
-    <div class="pomo-set-row">
-      <div class="pomo-set-name">Long break</div>
-      <div class="pomo-set-ctrls">
-        <button class="pomo-set-btn" onclick="pomoAdjust('long',-5)">−</button>
-        <div class="pomo-set-val" id="pvLong">15</div>
-        <button class="pomo-set-btn" onclick="pomoAdjust('long',5)">+</button>
-      </div>
-    </div>
-  </div>
-
-</div><!-- end pomoOverlay -->
 
 <!-- TOAST -->
 
@@ -443,14 +320,12 @@ function renderSchedule(){
     var isDone=!!info.done[block.id];
     var div=document.createElement('div');
     div.className='block '+block.color+(isDone?' done':'');
-    var pomoBtn=block.id==='deep'?'<button class="pomo-trigger" onclick="event.stopPropagation();openPomodoro()">🍅 Start Pomodoro</button>':'';
     div.innerHTML=
       '<div class="block-check"><span class="block-check-inner">✓</span></div>'+
       '<div class="block-info">'+
         '<div class="block-time">'+block.time+'</div>'+
         '<div class="block-title">'+block.title+'</div>'+
         (block.sub?'<div class="block-sub">'+block.sub+'</div>':'')+
-        pomoBtn+
       '</div>'+
       '<div class="block-emoji">'+block.emoji+'</div>';
     (function(b,el){
@@ -497,6 +372,10 @@ document.getElementById('noteInput').addEventListener('input',function(){
 // ─────────────────────────────────────────────
 // EXTERNAL LINKS
 // ─────────────────────────────────────────────
+function openWeather(){
+  window.location.href='weather://';
+  setTimeout(function(){window.open('https://weather.com','_blank');},800);
+}
 function openCalendar(){
   window.location.href='calshow://';
   setTimeout(function(){window.open('https://www.icloud.com/calendar/','_blank');},800);
@@ -517,7 +396,6 @@ var quotes=[
   {q:"Hard days are part of the work, not a sign it's wrong.",s:"Rest when you need to. Then return. That's the whole secret."},
   {q:"Even slow progress is still progress.",s:"A paragraph, an idea, a rereading — all of it counts."},
   {q:"You show up for your daughter and for your thesis.",s:"Doing both takes real courage and real love."},
-  {q:"Wednesdays are for the people you love most.",s:"Rest, recharge, and enjoy every moment with your daughter. 🌸"},
   {q:"American civilization chose you as much as you chose it.",s:"Your perspective on this field is rare and valuable."},
   {q:"The dissertation exists because you keep showing up.",s:"One word, one paragraph, one chapter at a time."},
   {q:"You are not behind. You are exactly where you need to be.",s:"Trust the process, Aggie. It's working."},
@@ -532,13 +410,28 @@ var quotes=[
   {q:"Some days the best research is just showing up.",s:"Open the document. Start anywhere. Keep going."},
   {q:"Your curiosity brought you here. Let it carry you through.",s:"The questions you ask matter deeply."},
   {q:"Every footnote, every draft, every late night counts.",s:"You are building something real and lasting."},
-  {q:"The finish line exists. You are moving toward it.",s:"Keep your eyes on the defense day, Aggie. 🎓"}
+  {q:"The finish line exists. You are moving toward it.",s:"Keep your eyes on the defense day, Aggie. 🎓"},
+  {q:"Be gentle with yourself today.",s:"You are a human being first, a PhD student second. 💜"},
+  {q:"Your best today is enough. It has always been enough.",s:"You don't need to earn your rest, Aggie."}
+];
+
+// Wednesday-only quotes — rest, family, recharging
+var wednesdayQuotes=[
+  {q:"Today is yours. Fully, completely, gently yours.",s:"There is nowhere else you need to be right now. 🌸"},
+  {q:"Rest is not something you earn. It's something you deserve.",s:"Let today be soft and full of good things, Aggie. 💜"},
+  {q:"Being present with your daughter today is not time away from your PhD.",s:"It is time that will make you stronger for it. 🌿"},
+  {q:"You give so much. Today, let yourself receive.",s:"Receive the quiet, the play, the laughter. You need it too."},
+  {q:"A Wednesday well lived is fuel for everything else.",s:"Be here fully today — your research will thank you. 💛"},
+  {q:"You are a wonderful mom and a brilliant researcher.",s:"Today, just be the mom. That is more than enough. 🌸"},
+  {q:"Slow down today. Notice the small things.",s:"They are often the most important ones."}
 ];
 
 function renderMotiv(){
   var now=new Date();
+  var isWed=now.getDay()===3;
+  var pool=isWed?wednesdayQuotes:quotes;
   var dayOfYear=Math.floor((now-new Date(now.getFullYear(),0,0))/86400000);
-  var q=quotes[dayOfYear%quotes.length];
+  var q=pool[dayOfYear%pool.length];
   document.getElementById('motivQuote').textContent='"'+q.q+'"';
   document.getElementById('motivSub').textContent=q.s;
 }
@@ -580,127 +473,10 @@ function closeToast(){
 }
 
 // ─────────────────────────────────────────────
-// POMODORO
-// ─────────────────────────────────────────────
-var pSet={focus:25,short:5,long:15};
-var pMode='focus';
-var pLeft=25*60;
-var pTotal=25*60;
-var pRunning=false;
-var pInterval=null;
-var pSessions=0;
-var pMinutes=0;
-var PCIRC=628;
-
-function openPomodoro(){
-  document.getElementById('pomoOverlay').classList.add('open');
-  pomoRefresh();
-}
-function closePomodoro(){
-  document.getElementById('pomoOverlay').classList.remove('open');
-}
-
-function pomoSetMode(mode){
-  pMode=mode;
-  clearInterval(pInterval);pRunning=false;
-  var btn=document.getElementById('pomoPlay');
-  btn.textContent='▶';btn.classList.remove('on');
-  var mins=mode==='focus'?pSet.focus:mode==='short'?pSet.short:pSet.long;
-  pLeft=mins*60;pTotal=mins*60;
-  var labels={focus:'Deep Focus 🤓',short:'Short Break 🌿',long:'Long Break ☕'};
-  document.getElementById('pomoModeLabel').textContent=labels[mode];
-  document.getElementById('pomoArc').classList.toggle('brk',mode!=='focus');
-  ['ptFocus','ptShort','ptLong'].forEach(function(id){document.getElementById(id).classList.remove('active');});
-  document.getElementById(mode==='focus'?'ptFocus':mode==='short'?'ptShort':'ptLong').classList.add('active');
-  pomoRefresh();
-}
-
-function pomoToggle(){
-  if(pRunning){
-    clearInterval(pInterval);pRunning=false;
-    var btn=document.getElementById('pomoPlay');btn.textContent='▶';btn.classList.remove('on');
-  } else {
-    pRunning=true;
-    var btn=document.getElementById('pomoPlay');btn.textContent='⏸';btn.classList.add('on');
-    pInterval=setInterval(pomoTick,1000);
-  }
-}
-
-function pomoTick(){
-  pLeft--;
-  pomoRefresh();
-  if(pLeft<=0){clearInterval(pInterval);pRunning=false;pomoComplete();}
-}
-
-function pomoComplete(){
-  var btn=document.getElementById('pomoPlay');btn.textContent='▶';btn.classList.remove('on');
-  if(pMode==='focus'){
-    pSessions++;pMinutes+=pSet.focus;
-    pomoUpdateStats();
-    launchSunflowers(document.getElementById('pomoPlay'));
-    showToast('🌻 Focus session done!','Wonderful work, Aggie. Take a break!');
-    setTimeout(function(){
-      if(pSessions%4===0) pomoSetMode('long'); else pomoSetMode('short');
-      pomoUpdateDots();
-    },2000);
-  } else {
-    showToast('✨ Break over!','Ready for another deep work session? 🤓');
-    setTimeout(function(){pomoSetMode('focus');},2000);
-  }
-  pomoUpdateDots();
-}
-
-function pomoReset(){
-  clearInterval(pInterval);pRunning=false;
-  var btn=document.getElementById('pomoPlay');btn.textContent='▶';btn.classList.remove('on');
-  var mins=pMode==='focus'?pSet.focus:pMode==='short'?pSet.short:pSet.long;
-  pLeft=mins*60;pTotal=mins*60;
-  pomoRefresh();
-}
-
-function pomoSkip(){
-  clearInterval(pInterval);pRunning=false;
-  pLeft=0;pomoRefresh();pomoComplete();
-}
-
-function pomoAdjust(key,delta){
-  pSet[key]=Math.max(1,pSet[key]+delta);
-  document.getElementById('pv'+key.charAt(0).toUpperCase()+key.slice(1)).textContent=pSet[key];
-  if(pMode===key) pomoSetMode(key);
-}
-
-function pomoRefresh(){
-  var m=Math.floor(pLeft/60).toString().padStart(2,'0');
-  var s=(pLeft%60).toString().padStart(2,'0');
-  document.getElementById('pomoTime').textContent=m+':'+s;
-  var pct=pLeft/pTotal;
-  document.getElementById('pomoArc').style.strokeDashoffset=PCIRC*(1-pct);
-  pomoUpdateDots();
-}
-
-function pomoUpdateDots(){
-  var dots=document.getElementById('pomoDots');
-  dots.innerHTML='';
-  var pos=pSessions%4;
-  for(var i=0;i<4;i++){
-    var d=document.createElement('div');
-    d.className='pomo-dot'+(i<pos?' done':i===pos&&pMode==='focus'?' cur':'');
-    dots.appendChild(d);
-  }
-}
-
-function pomoUpdateStats(){
-  document.getElementById('pSessions').textContent=pSessions;
-  document.getElementById('pMinutes').textContent=pMinutes;
-  document.getElementById('pCycles').textContent=Math.floor(pSessions/4)||'—';
-}
-
-// ─────────────────────────────────────────────
 // INIT
 // ─────────────────────────────────────────────
 renderMotiv();
 renderAll();
 </script>
-
 </body>
 </html>
